@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
-from .views import MaintenanceRecordViewSet
+from .views import MaintenanceViewSet
 
 router = DefaultRouter()
-router.register(r'', MaintenanceRecordViewSet, basename='maintenance')
+router.register(r'', MaintenanceViewSet, basename='maintenance')
 
 urlpatterns = router.urls

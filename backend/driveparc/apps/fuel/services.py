@@ -1,9 +1,9 @@
 from django.db.models import Sum
-from .models import FuelEntry
+from .models import FuelVoucher
 
 
 def get_total_fuel_cost(vehicle_id: int) -> dict:
-    return FuelEntry.objects.filter(vehicle_id=vehicle_id).aggregate(
+    return FuelVoucher.objects.filter(vehicle_id=vehicle_id).aggregate(
         total=Sum('total_cost'),
         liters=Sum('liters'),
     )

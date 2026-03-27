@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import FuelEntry
+from .models import FuelVoucher
 
 
-class FuelEntrySerializer(serializers.ModelSerializer):
+class FuelVoucherSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FuelEntry
+        model = FuelVoucher
         fields = '__all__'
         read_only_fields = ['id', 'created_at', 'updated_at']

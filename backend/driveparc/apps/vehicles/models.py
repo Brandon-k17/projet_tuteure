@@ -403,7 +403,7 @@ class VehicleDocument(BaseModel):
     vehicle = models.ForeignKey(
         Vehicle,
         on_delete=models.CASCADE,
-        related_name='documents',
+        related_name='vehicle_documents',
         verbose_name=_('Véhicule')
     )
     document_type = models.CharField(

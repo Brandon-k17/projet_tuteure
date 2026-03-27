@@ -50,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     email = models.EmailField(
         _('Adresse email'),
         unique=True,
-        max_length=255
+        max_length=191
     )
     first_name = models.CharField(
         _('Prénom'),

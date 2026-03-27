@@ -41,22 +41,33 @@ def custom_exception_handler(exc, context):
     
     # Personnaliser la structure de réponse
     if response is not None:
+        data = response.data
+
+        # data peut être un dict ou une liste (erreurs de validation)
+        if isinstance(data, dict):
+            message = data.get('detail', data.get('message', "Une erreur s'est produite"))
+            # Si message est un objet ErrorDetail, le convertir en str
+            message = str(message)
+            details = data.get('errors', data.get('details', None))
+            # Cas où les erreurs de champs sont directement dans data
+            if details is None and any(k not in ('detail', 'message', 'error') for k in data):
+                details = {k: v for k, v in data.items() if k not in ('detail', 'message')}
+        else:
+            message = "Une erreur s'est produite"
+            details = data
+
         custom_response_data = {
             'success': False,
             'error': {
                 'code': response.status_code,
-                'message': response.data.get('detail', 
-                           response.data.get('message', 'Une erreur s\'est produite'))
+                'message': message,
             }
         }
-        
-        # Ajouter les détails si disponibles
-        if 'errors' in response.data or 'details' in response.data:
-            custom_response_data['error']['details'] = response.data.get('errors', 
-                                                        response.data.get('details'))
-        
+        if details:
+            custom_response_data['error']['details'] = details
+
         response.data = custom_response_data
-    
+
     return response
 
 

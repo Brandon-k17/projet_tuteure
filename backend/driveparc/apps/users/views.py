@@ -106,6 +106,9 @@ class AuthViewSet(viewsets.GenericViewSet):
         Récupérer le profil de l'utilisateur connecté
         GET /api/v1/auth/profile/
         """
+        if not request.user or not request.user.is_authenticated:
+            from rest_framework.exceptions import NotAuthenticated
+            raise NotAuthenticated()
         serializer = UserSerializer(request.user)
         return Response({
             'success': True,

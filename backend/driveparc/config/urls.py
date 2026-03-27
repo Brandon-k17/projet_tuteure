@@ -33,15 +33,15 @@ urlpatterns = [
     path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     
     # API Endpoints
-    path('api/v1/auth/', include('apps.users.urls')),
-    path('api/v1/vehicles/', include('apps.vehicles.urls')),
-    path('api/v1/reservations/', include('apps.reservations.urls')),
-    path('api/v1/maintenance/', include('apps.maintenance.urls')),
-    path('api/v1/fuel/', include('apps.fuel.urls')),
-    path('api/v1/expenses/', include('apps.expenses.urls')),
-    path('api/v1/notifications/', include('apps.notifications.urls')),
-    path('api/v1/reports/', include('apps.reports.urls')),
-    path('api/v1/documents/', include('apps.documents.urls')),
+    path('api/auth/', include('apps.users.urls')),
+    path('api/vehicles/', include('apps.vehicles.urls')),
+    path('api/reservations/', include('apps.reservations.urls')),
+    path('api/maintenance/', include('apps.maintenance.urls')),
+    path('api/fuel/', include('apps.fuel.urls')),
+    path('api/expenses/', include('apps.expenses.urls')),
+    #path('api/v1/notifications/', include('apps.notifications.urls')),
+    #path('api/v1/reports/', include('apps.reports.urls')),
+    path('api/documents/', include('apps.documents.urls')),
 ]
 
 # Serve media files in development

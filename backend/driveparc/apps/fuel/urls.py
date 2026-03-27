@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
-from .views import FuelEntryViewSet
+from .views import FuelVoucherViewSet
 
 router = DefaultRouter()
-router.register(r'', FuelEntryViewSet, basename='fuel')
+router.register(r'', FuelVoucherViewSet, basename='fuel')
 
 urlpatterns = router.urls

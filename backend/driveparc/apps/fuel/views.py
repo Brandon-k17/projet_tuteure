@@ -1,8 +1,8 @@
 from rest_framework import viewsets
-from .models import FuelEntry
-from .serializers import FuelEntrySerializer
+from .models import FuelVoucher
+from .serializers import FuelVoucherSerializer
 
 
-class FuelEntryViewSet(viewsets.ModelViewSet):
-    queryset = FuelEntry.objects.select_related('vehicle', 'driver').all()
-    serializer_class = FuelEntrySerializer
+class FuelVoucherViewSet(viewsets.ModelViewSet):
+    queryset = FuelVoucher.objects.select_related('vehicle', 'driver').all()
+    serializer_class = FuelVoucherSerializer

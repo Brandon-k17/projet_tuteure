@@ -1,0 +1,110 @@
+INFO 2026-03-27 04:00:44,625 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:06:47,355 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\maintenance\views.py changed, reloading.
+INFO 2026-03-27 04:06:49,091 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:08:13,341 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:08:53,583 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\maintenance\serializers.py changed, reloading.
+INFO 2026-03-27 04:08:54,254 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:09:06,224 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:09:36,808 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\maintenance\serializers.py changed, reloading.
+INFO 2026-03-27 04:09:37,944 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:10:03,571 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\maintenance\serializers.py changed, reloading.
+INFO 2026-03-27 04:10:04,479 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:10:11,069 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\maintenance\views.py changed, reloading.
+INFO 2026-03-27 04:10:12,368 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:10:28,325 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:13:57,201 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\fuel\views.py changed, reloading.
+INFO 2026-03-27 04:13:58,564 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:15:35,389 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\fuel\serializers.py changed, reloading.
+INFO 2026-03-27 04:15:36,350 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:16:01,835 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\fuel\views.py changed, reloading.
+INFO 2026-03-27 04:16:02,544 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:16:38,332 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\fuel\views.py changed, reloading.
+INFO 2026-03-27 04:16:38,987 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:20:34,535 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:20:57,321 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:21:08,874 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:22:47,333 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\documents\models.py changed, reloading.
+INFO 2026-03-27 04:22:49,481 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:23:24,396 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-03-27 04:23:25,097 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:38:48,635 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 04:39:00,892 log Not Found: /
+WARNING 2026-03-27 04:39:01,407 log Not Found: /favicon.ico
+INFO 2026-03-27 04:40:40,885 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\config\urls.py changed, reloading.
+INFO 2026-03-27 04:40:42,272 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 04:43:00,983 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 04:43:06,371 log Unauthorized: /api/vehicles/
+WARNING 2026-03-27 04:43:53,020 log Unauthorized: /api/auth/
+INFO 2026-03-27 05:10:27,391 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 05:10:32,935 log Not Found: /
+WARNING 2026-03-27 05:11:48,142 log Not Found: /
+WARNING 2026-03-27 05:12:56,305 log Unauthorized: /api/vehicles/
+INFO 2026-03-27 05:17:38,570 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 05:18:52,649 log Bad Request: /api/auth/login/
+INFO 2026-03-27 05:24:17,665 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 05:24:50,998 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 05:28:16,603 log Bad Request: /api/vehicles/3/change_status/
+WARNING 2026-03-27 05:28:18,273 log Forbidden: /api/vehicles/
+WARNING 2026-03-27 05:28:19,085 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:28:19,907 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:28:25,115 log Not Found: /api/vehicles/99999/
+WARNING 2026-03-27 05:28:28,260 log Unauthorized: /api/vehicles/
+WARNING 2026-03-27 05:28:29,383 log Bad Request: /api/vehicles/16/update_mileage/
+WARNING 2026-03-27 05:28:30,388 log Bad Request: /api/vehicles/17/update_mileage/
+WARNING 2026-03-27 05:28:33,487 log Forbidden: /api/vehicles/20/
+WARNING 2026-03-27 05:29:31,274 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:29:33,386 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:29:34,145 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:29:34,585 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:29:36,160 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:29:37,045 log Bad Request: /api/auth/login/
+ERROR 2026-03-27 05:29:38,032 log Internal Server Error: /api/auth/profile/
+WARNING 2026-03-27 05:29:42,078 log Bad Request: /api/auth/users/
+WARNING 2026-03-27 05:29:44,871 log Forbidden: /api/auth/users/
+WARNING 2026-03-27 05:29:47,973 log Bad Request: /api/vehicles/3/change_status/
+WARNING 2026-03-27 05:29:49,774 log Forbidden: /api/vehicles/
+WARNING 2026-03-27 05:29:50,691 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:29:51,593 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:29:57,100 log Not Found: /api/vehicles/99999/
+WARNING 2026-03-27 05:30:00,352 log Unauthorized: /api/vehicles/
+WARNING 2026-03-27 05:30:01,477 log Bad Request: /api/vehicles/16/update_mileage/
+WARNING 2026-03-27 05:30:02,441 log Bad Request: /api/vehicles/17/update_mileage/
+WARNING 2026-03-27 05:30:05,530 log Forbidden: /api/vehicles/20/
+WARNING 2026-03-27 05:30:58,418 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:31:00,631 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:31:01,533 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:31:02,068 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:31:04,226 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:31:05,166 log Bad Request: /api/auth/login/
+ERROR 2026-03-27 05:31:06,225 log Internal Server Error: /api/auth/profile/
+WARNING 2026-03-27 05:31:10,316 log Bad Request: /api/auth/users/
+WARNING 2026-03-27 05:31:13,711 log Forbidden: /api/auth/users/
+WARNING 2026-03-27 05:31:16,896 log Bad Request: /api/vehicles/3/change_status/
+WARNING 2026-03-27 05:31:18,789 log Forbidden: /api/vehicles/
+WARNING 2026-03-27 05:31:19,646 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:31:20,518 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:31:25,838 log Not Found: /api/vehicles/99999/
+WARNING 2026-03-27 05:31:29,085 log Unauthorized: /api/vehicles/
+WARNING 2026-03-27 05:31:30,147 log Bad Request: /api/vehicles/16/update_mileage/
+WARNING 2026-03-27 05:31:31,161 log Bad Request: /api/vehicles/17/update_mileage/
+WARNING 2026-03-27 05:31:34,049 log Forbidden: /api/vehicles/20/
+INFO 2026-03-27 05:32:08,514 autoreload C:\Users\naell\OneDrive\Documents\projet-tuteure\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-03-27 05:32:09,963 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 05:32:28,189 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:32:30,318 log Bad Request: /api/auth/change-password/
+WARNING 2026-03-27 05:32:31,348 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:32:31,880 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:32:34,135 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:32:35,573 log Bad Request: /api/auth/login/
+WARNING 2026-03-27 05:32:37,576 log Unauthorized: /api/auth/profile/
+WARNING 2026-03-27 05:32:45,033 log Bad Request: /api/auth/users/
+WARNING 2026-03-27 05:32:49,804 log Forbidden: /api/auth/users/
+WARNING 2026-03-27 05:32:53,867 log Bad Request: /api/vehicles/3/change_status/
+WARNING 2026-03-27 05:32:56,195 log Forbidden: /api/vehicles/
+WARNING 2026-03-27 05:32:57,035 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:32:57,867 log Bad Request: /api/vehicles/
+WARNING 2026-03-27 05:33:03,025 log Not Found: /api/vehicles/99999/
+WARNING 2026-03-27 05:33:05,590 log Unauthorized: /api/vehicles/
+WARNING 2026-03-27 05:33:06,476 log Bad Request: /api/vehicles/16/update_mileage/
+WARNING 2026-03-27 05:33:07,493 log Bad Request: /api/vehicles/17/update_mileage/
+WARNING 2026-03-27 05:33:10,291 log Forbidden: /api/vehicles/20/
