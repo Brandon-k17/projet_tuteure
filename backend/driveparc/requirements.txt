@@ -1,0 +1,56 @@
+django>=4.2
+djangorestframework>=3.14
+django-environ>=0.11
+psycopg2-binary>=2.9
+celery>=5.3
+django-cors-headers>=4.3
+Pillow>=10.0
+# Django & Extensions
+Django==5.0
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+django-cors-headers==4.3.1
+django-filter==23.5
+django-environ==0.11.2
+
+# Base de données
+psycopg2-binary==2.9.9
+
+# Gestion des fichiers et images
+Pillow==10.2.0
+python-magic==0.4.27
+
+# Génération de rapports PDF
+reportlab==4.0.9
+weasyprint==60.2
+
+# Analyse de données et statistiques
+pandas==2.1.4
+numpy==1.26.3
+
+# OCR pour extraction de données
+pytesseract==0.3.10
+
+# Validation et sécurité
+python-decouple==3.8
+cryptography==42.0.0
+
+# Gestion des tâches asynchrones
+celery==5.3.6
+redis==5.0.1
+
+# Outils de développement
+python-dateutil==2.8.2
+pytz==2024.1
+
+# Tests
+pytest==7.4.4
+pytest-django==4.7.0
+factory-boy==3.3.0
+faker==22.0.0
+
+# Documentation API
+drf-yasg==1.21.7
+
+# Monitoring et logs
+django-debug-toolbar==4.2.0
