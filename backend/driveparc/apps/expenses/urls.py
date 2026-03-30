@@ -1,7 +1,7 @@
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 from .views import ExpenseViewSet
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(r'', ExpenseViewSet, basename='expenses')
 
 urlpatterns = router.urls

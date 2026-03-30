@@ -15,9 +15,12 @@ class Reservation(BaseModel):
     """
     vehicle = models.ForeignKey(
         'vehicles.Vehicle',
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,   # ← SET_NULL au lieu de CASCADE
+        null=True,                   # ← nullable
+        blank=True,                  # ← optionnel dans les forms
         related_name='reservations',
-        verbose_name=_('Véhicule')
+        verbose_name=_('Véhicule'),
+        help_text="Assigné par le gestionnaire après validation"
     )
     requester = models.ForeignKey(
         'users.User',

@@ -1,7 +1,7 @@
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 from .views import DocumentViewSet
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(r'', DocumentViewSet, basename='documents')
 
 urlpatterns = router.urls

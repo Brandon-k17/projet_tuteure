@@ -1,7 +1,12 @@
-from rest_framework.routers import DefaultRouter
-from .views import FuelEntryViewSet
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+from .views import FuelVoucherViewSet, FuelTransactionViewSet, MonthlyFuelAllocationViewSet
 
-router = DefaultRouter()
-router.register(r'', FuelEntryViewSet, basename='fuel')
+router = SimpleRouter()
+router.register(r'vouchers', FuelVoucherViewSet, basename='fuel-voucher')
+router.register(r'transactions', FuelTransactionViewSet, basename='fuel-transaction')
+router.register(r'allocations', MonthlyFuelAllocationViewSet, basename='fuel-allocation')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+]

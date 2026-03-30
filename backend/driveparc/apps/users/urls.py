@@ -3,10 +3,10 @@ URLs pour l'application users
 """
 
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 from .views import AuthViewSet, UserViewSet, DriverProfileViewSet, TechnicianProfileViewSet
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(r'users', UserViewSet, basename='user')
 router.register(r'drivers', DriverProfileViewSet, basename='driver')
 router.register(r'technicians', TechnicianProfileViewSet, basename='technician')

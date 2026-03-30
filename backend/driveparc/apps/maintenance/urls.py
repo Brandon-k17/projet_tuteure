@@ -1,7 +1,11 @@
-from rest_framework.routers import DefaultRouter
-from .views import MaintenanceRecordViewSet
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+from .views import MaintenanceViewSet, BreakdownViewSet
 
-router = DefaultRouter()
-router.register(r'', MaintenanceRecordViewSet, basename='maintenance')
+router = SimpleRouter()
+router.register(r'maintenance', MaintenanceViewSet, basename='maintenance')
+router.register(r'breakdowns', BreakdownViewSet, basename='breakdown')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+]
