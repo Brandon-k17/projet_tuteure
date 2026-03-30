@@ -1,7 +1,19 @@
-from rest_framework.routers import DefaultRouter
-from .views import VehicleViewSet
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 
-router = DefaultRouter()
-router.register(r'', VehicleViewSet, basename='vehicles')
+from .views import (
+    VehicleViewSet,
+    VehicleAssignmentViewSet,
+    VehicleInsuranceViewSet,
+    VehicleDocumentViewSet,
+)
 
-urlpatterns = router.urls
+router = SimpleRouter()
+router.register(r'',            VehicleViewSet,           basename='vehicles')
+router.register(r'assignments', VehicleAssignmentViewSet, basename='vehicle-assignments')
+router.register(r'insurances',  VehicleInsuranceViewSet,  basename='vehicle-insurances')
+router.register(r'documents',   VehicleDocumentViewSet,   basename='vehicle-documents')
+
+urlpatterns = [
+    path('', include(router.urls)),
+]

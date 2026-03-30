@@ -1,0 +1,260 @@
+INFO 2026-03-26 21:43:42,212 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:46:59,750 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:50:02,946 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:51:58,824 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\maintenance\views.py changed, reloading.
+INFO 2026-03-26 21:51:59,741 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:55:33,166 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\maintenance\serializers.py changed, reloading.
+INFO 2026-03-26 21:55:34,185 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:55:48,619 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:58:11,630 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\fuel\views.py changed, reloading.
+INFO 2026-03-26 21:58:12,579 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:58:35,494 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\fuel\urls.py changed, reloading.
+INFO 2026-03-26 21:58:36,467 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 21:58:52,973 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:02:37,902 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:24:23,634 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:25:08,342 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:28:31,592 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:29:28,826 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\documents\models.py changed, reloading.
+INFO 2026-03-26 22:29:30,030 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:32:09,458 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:34:25,580 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\config\settings.py changed, reloading.
+INFO 2026-03-26 22:34:26,688 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:35:13,416 autoreload Watching for file changes with StatReloader
+INFO 2026-03-26 22:37:57,033 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 01:04:26,056 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 01:05:37,867 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-27 01:05:50,745 log Not Found: /
+WARNING 2026-03-27 01:05:51,283 log Not Found: /favicon.ico
+WARNING 2026-03-27 01:52:44,025 log Not Found: /api/users/auth/login/
+WARNING 2026-03-27 01:54:32,121 log Not Found: /api/users/login/
+WARNING 2026-03-27 01:54:38,824 log Not Found: /api/users/login/
+WARNING 2026-03-27 01:57:17,846 log Not Found: /api/users/login/
+WARNING 2026-03-27 01:57:19,339 log Not Found: /api/users/login/
+WARNING 2026-03-27 01:59:59,186 log Not Found: /api/v1/users/login/
+WARNING 2026-03-27 02:00:03,998 log Not Found: /api/v1/users/login/
+ERROR 2026-03-27 02:03:06,841 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:03:06,861 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 02:03:06,950 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:03:06,969 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:03:06,998 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 02:03:07,057 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-27 02:10:25,487 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:10:25,507 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:10:25,508 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:21:51,638 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:21:51,652 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:21:51,687 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:21:51,701 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 02:22:02,138 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:22:02,152 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:22:02,153 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 02:22:08,131 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:22:08,137 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:22:08,138 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 02:24:40,591 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:24:40,596 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:24:40,597 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 02:24:40,614 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:24:40,629 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 02:24:40,630 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 02:28:36,127 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 02:28:36,134 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 02:28:36,138 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 02:59:34,996 log Bad Request: /api/v1/auth/logout/
+ERROR 2026-03-27 03:16:55,701 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 03:16:55,709 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 03:16:55,736 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 03:16:55,755 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 03:16:55,758 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 03:16:55,772 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-27 03:58:45,405 log Not Found: /
+ERROR 2026-03-27 07:06:38,081 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:06:38,114 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:06:38,128 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:06:38,155 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 07:06:38,172 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:06:38,177 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 07:10:52,550 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:10:52,557 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:10:52,573 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:10:52,596 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:10:52,601 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:10:52,612 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:13:55,104 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 07:13:55,105 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 07:13:55,130 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-27 07:25:35,156 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-27 07:25:37,132 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:25:40,100 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:29:28,377 log Unauthorized: /api/v1/auth/logout/
+ERROR 2026-03-27 07:29:39,972 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:29:39,991 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:29:40,026 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:29:40,063 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:29:40,085 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:29:40,125 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-27 07:29:44,585 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-27 07:30:08,468 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:30:08,484 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:30:08,486 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:30:08,520 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:30:08,546 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:30:08,552 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:30:11,078 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-27 07:33:52,100 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:33:52,111 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 07:33:52,112 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 07:33:52,127 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 07:33:52,148 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 07:33:52,149 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 07:33:56,314 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-27 07:33:58,488 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:33:59,372 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:33:59,603 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:34:12,218 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:35:52,338 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:35:53,755 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:35:54,886 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:38:25,232 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:38:26,617 log Unauthorized: /api/v1/auth/logout/
+WARNING 2026-03-27 07:38:27,602 log Unauthorized: /api/v1/auth/logout/
+ERROR 2026-03-27 08:10:03,732 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 08:10:03,732 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 08:10:03,750 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 08:10:03,770 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 08:10:03,784 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 08:10:03,785 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 08:10:12,520 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 08:10:12,527 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 08:10:12,527 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 08:10:12,537 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 08:10:12,555 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 08:10:12,557 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 08:19:41,457 log Not Found: /api/v1/vehicles/my-vehicle/
+ERROR 2026-03-27 08:19:41,464 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 08:19:41,467 log Internal Server Error: /api/v1/notifications/
+WARNING 2026-03-27 08:19:41,486 log Not Found: /api/v1/vehicles/my-vehicle/
+ERROR 2026-03-27 08:19:41,505 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-27 08:19:41,507 log Internal Server Error: /api/v1/notifications/
+INFO 2026-03-27 09:06:22,347 autoreload Watching for file changes with StatReloader
+INFO 2026-03-27 09:08:00,930 autoreload Watching for file changes with StatReloader
+ERROR 2026-03-27 09:08:19,049 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-27 09:08:19,086 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-27 09:08:19,098 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 09:08:19,110 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-27 09:08:19,118 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-27 09:08:19,122 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-28 10:05:27,869 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-28 10:05:27,913 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-28 10:05:27,914 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-28 10:05:27,945 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-03-28 10:05:27,966 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-28 10:05:27,982 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-28 10:07:33,206 log Not Found: /api/v1/vehicles/my-vehicle/
+ERROR 2026-03-28 10:07:33,235 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-28 10:07:33,255 log Not Found: /api/v1/vehicles/my-vehicle/
+ERROR 2026-03-28 10:07:33,256 log Internal Server Error: /api/v1/notifications/
+ERROR 2026-03-28 10:07:33,273 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-28 10:07:33,281 log Internal Server Error: /api/v1/notifications/
+WARNING 2026-03-28 10:09:01,011 log Bad Request: /api/v1/auth/logout/
+ERROR 2026-03-29 20:52:33,678 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-29 20:52:33,707 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-29 20:52:33,740 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-29 20:52:33,748 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-29 20:52:33,770 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-03-29 20:52:33,792 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-29 20:54:06,303 log Not Found: /favicon.ico
+INFO 2026-03-29 21:12:26,200 autoreload C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\apps\__init__.py changed, reloading.
+INFO 2026-03-29 21:20:42,087 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:22:02,657 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:23:55,187 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:24:12,138 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-03-29 21:24:14,204 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:24:19,763 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-03-29 21:24:21,567 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:24:25,548 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-03-29 21:24:27,340 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:24:40,742 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\urls.py changed, reloading.
+INFO 2026-03-29 21:24:42,663 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:25:13,775 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\maintenance\urls.py changed, reloading.
+INFO 2026-03-29 21:25:15,597 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:25:25,490 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\fuel\urls.py changed, reloading.
+INFO 2026-03-29 21:25:27,350 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:26:11,300 autoreload Watching for file changes with StatReloader
+ERROR 2026-03-29 21:26:20,076 log Internal Server Error: /api/v1/vehicles/
+INFO 2026-03-29 21:28:57,660 autoreload Watching for file changes with StatReloader
+ERROR 2026-03-29 21:29:03,687 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-29 21:35:56,585 log Internal Server Error: /api/v1/vehicles/
+INFO 2026-03-29 21:37:20,190 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\core\exceptions.py changed, reloading.
+INFO 2026-03-29 21:37:22,129 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 21:39:00,765 autoreload Watching for file changes with StatReloader
+ERROR 2026-03-29 21:39:10,272 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-03-29 21:39:19,151 log Internal Server Error: /api/v1/vehicles/
+INFO 2026-03-29 21:41:57,766 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 21:42:24,537 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 21:42:24,557 log Not Found: /api/v1/drivers/available/
+WARNING 2026-03-29 21:42:24,649 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 21:42:24,670 log Not Found: /api/v1/drivers/available/
+ERROR 2026-03-29 21:42:24,686 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-03-29 21:42:24,906 log Internal Server Error: /api/v1/reservations/
+INFO 2026-03-29 21:44:53,549 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 21:49:20,866 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 21:49:20,964 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 21:52:40,067 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 21:54:43,266 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 22:04:27,990 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 22:08:41,982 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-29 22:09:31,769 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-29 22:09:31,829 log Not Found: /api/v1/vehicles/my-vehicle/
+INFO 2026-03-29 23:01:23,141 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-03-29 23:01:25,575 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 23:01:36,784 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\serializers.py changed, reloading.
+INFO 2026-03-29 23:01:38,640 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 23:01:51,313 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\urls.py changed, reloading.
+INFO 2026-03-29 23:01:52,929 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 23:07:14,658 log Bad Request: /api/v1/reservations/
+WARNING 2026-03-29 23:07:29,276 log Bad Request: /api/v1/reservations/
+INFO 2026-03-29 23:30:11,755 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\models.py changed, reloading.
+INFO 2026-03-29 23:30:13,007 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 23:30:18,624 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\models.py changed, reloading.
+INFO 2026-03-29 23:30:19,483 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 23:30:39,485 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\serializers.py changed, reloading.
+INFO 2026-03-29 23:30:40,112 autoreload Watching for file changes with StatReloader
+INFO 2026-03-29 23:31:54,143 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-03-29 23:31:54,793 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 23:33:26,765 log Unauthorized: /api/v1/reservations/
+WARNING 2026-03-29 23:33:35,092 log Unauthorized: /api/v1/reservations/
+INFO 2026-03-29 23:35:21,269 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 23:35:27,561 log Unauthorized: /api/v1/reservations/
+WARNING 2026-03-29 23:35:44,908 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-29 23:35:44,936 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-29 23:36:53,460 log Bad Request: /api/v1/reservations/
+WARNING 2026-03-29 23:42:28,953 log Bad Request: /api/v1/reservations/
+INFO 2026-03-29 23:44:25,067 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-29 23:44:31,307 log Bad Request: /api/v1/reservations/
+WARNING 2026-03-29 23:44:39,015 log Bad Request: /api/v1/reservations/
+WARNING 2026-03-30 02:58:41,402 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 02:58:41,503 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 04:17:27,114 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 04:17:27,180 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 04:21:02,790 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-30 04:21:17,469 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-30 04:21:17,562 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-30 04:35:37,419 log Not Found: /api/v1/maintenance/
+INFO 2026-03-30 04:38:29,473 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-03-30 04:38:31,525 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:38:59,799 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-03-30 04:39:01,290 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:39:10,462 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-03-30 04:39:12,479 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:40:16,789 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-03-30 04:40:18,534 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:40:22,354 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-03-30 04:40:23,850 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:40:27,433 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-03-30 04:40:28,812 autoreload Watching for file changes with StatReloader
+INFO 2026-03-30 04:45:36,506 autoreload Watching for file changes with StatReloader
+WARNING 2026-03-30 04:47:45,299 log Not Found: /api/v1/users/
+WARNING 2026-03-30 04:47:45,386 log Not Found: /api/v1/users/
+INFO 2026-03-30 05:02:11,402 autoreload Watching for file changes with StatReloader

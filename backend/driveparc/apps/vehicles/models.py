@@ -48,6 +48,19 @@ class Vehicle(BaseModel):
         max_length=20,
         choices=VEHICLE_TYPES
     )
+    VEHICLE_CATEGORY_CHOICES = [
+        ("TOURISME",   "Tourisme"),     # Berlines, SUV, voitures de fonction
+        ("UTILITAIRE", "Utilitaire"),   # Minibus, fourgons, pick-up
+        ("BUS",        "Bus"),          # Bus scolaires, transport de groupe
+    ]
+    
+    category = models.CharField(
+        _('Catégorie'),
+        max_length=20,
+        choices=VEHICLE_CATEGORY_CHOICES,
+        default="TOURISME",
+        help_text="TOURISME=<10 places, UTILITAIRE=10-19 places, BUS=20+ places"
+    )
     fuel_type = models.CharField(
         _('Type de carburant'),
         max_length=20,

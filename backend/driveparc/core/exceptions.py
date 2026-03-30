@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.http import Http404
+import traceback
 
 
 def custom_exception_handler(exc, context):
@@ -14,10 +15,8 @@ def custom_exception_handler(exc, context):
     Gestionnaire d'exceptions personnalisé pour l'API
     Retourne des réponses d'erreur cohérentes
     """
-    # Appeler le gestionnaire par défaut d'abord
     response = exception_handler(exc, context)
-    
-    # Gérer les exceptions Django natives
+
     if response is None:
         if isinstance(exc, DjangoValidationError):
             response = Response({
@@ -25,45 +24,46 @@ def custom_exception_handler(exc, context):
                 'message': str(exc),
                 'details': exc.message_dict if hasattr(exc, 'message_dict') else None
             }, status=status.HTTP_400_BAD_REQUEST)
-        
+
         elif isinstance(exc, Http404):
             response = Response({
                 'error': 'Not Found',
                 'message': 'La ressource demandée n\'existe pas'
             }, status=status.HTTP_404_NOT_FOUND)
-        
+
         else:
-            # Erreur serveur générique
+            # ── DEBUG : affiche la vraie erreur ──
+            traceback.print_exc()
             response = Response({
-                'error': 'Internal Server Error',
-                'message': 'Une erreur interne s\'est produite'
+                'error':     'Internal Server Error',
+                'message':   str(exc),
+                'traceback': traceback.format_exc(),
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-    # Personnaliser la structure de réponse
+
     if response is not None:
         custom_response_data = {
             'success': False,
             'error': {
-                'code': response.status_code,
-                'message': response.data.get('detail', 
+                'code':    response.status_code,
+                'message': response.data.get('detail',
                            response.data.get('message', 'Une erreur s\'est produite'))
             }
         }
-        
-        # Ajouter les détails si disponibles
+
         if 'errors' in response.data or 'details' in response.data:
-            custom_response_data['error']['details'] = response.data.get('errors', 
-                                                        response.data.get('details'))
-        
+            custom_response_data['error']['details'] = response.data.get(
+                'errors', response.data.get('details'))
+
+        # ── DEBUG : garde aussi le traceback dans la réponse ──
+        if 'traceback' in response.data:
+            custom_response_data['error']['traceback'] = response.data['traceback']
+
         response.data = custom_response_data
-    
+
     return response
 
 
 class BusinessLogicException(Exception):
-    """
-    Exception pour les erreurs de logique métier
-    """
     def __init__(self, message, code='BUSINESS_ERROR'):
         self.message = message
         self.code = code
@@ -71,9 +71,6 @@ class BusinessLogicException(Exception):
 
 
 class ResourceNotFoundException(Exception):
-    """
-    Exception quand une ressource n'est pas trouvée
-    """
     def __init__(self, resource_name, resource_id=None):
         self.resource_name = resource_name
         self.resource_id = resource_id
@@ -84,9 +81,6 @@ class ResourceNotFoundException(Exception):
 
 
 class PermissionDeniedException(Exception):
-    """
-    Exception pour refus de permission
-    """
     def __init__(self, action, resource=None):
         self.action = action
         self.resource = resource
@@ -97,9 +91,6 @@ class PermissionDeniedException(Exception):
 
 
 class ValidationException(Exception):
-    """
-    Exception pour erreurs de validation
-    """
     def __init__(self, field, message):
         self.field = field
         self.message = message

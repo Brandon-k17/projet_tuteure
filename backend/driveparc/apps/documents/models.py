@@ -10,7 +10,7 @@ class Document(BaseModel):
         ('inspection', 'Contrôle technique'),
         ('other', 'Autre'),
     ]
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='documents')
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_documents')
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to='documents/%Y/%m/')
