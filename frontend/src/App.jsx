@@ -1,121 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import SplashScreen from "./pages/auth/SplashScreen";
+import LoginScreen from "./pages/auth/Login";
+import DashboardGestionnaire from "./pages/dashboard/DashboardGestionnaire";
+import DashboardPersonnel from "./pages/dashboard/DashboardPersonnel";
+import DashboardChauffeur from "./pages/dashboard/DashBoardChauffeur";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [phase, setPhase] = useState("splash");
+  const [userData, setUserData] = useState(null);
 
+  const handleLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    setUserData(null);
+    setPhase("login");
+  };
+
+  if (phase === "splash") {
+    return <SplashScreen onFinish={() => setPhase("login")} />;
+  }
+
+  if (phase === "login") {
+    return (
+      <LoginScreen
+        onLogin={(data) => {
+          localStorage.setItem("access_token", data.tokens?.access || data.access);
+          localStorage.setItem("refresh_token", data.tokens?.refresh || data.refresh);
+          localStorage.setItem("user_role", data.user.role);
+          localStorage.setItem("user_data", JSON.stringify(data.user));
+          setUserData(data.user);
+          setPhase("app");
+        }}
+      />
+    );
+  }
+
+  // ✅ Rôles qui viennent VRAIMENT de ton backend (init_driveparc.py)
+  const role = userData?.role || localStorage.getItem("user_role") || "GESTIONNAIRE";
+
+  if (role === "GESTIONNAIRE" || role === "ADMIN") {
+    return <DashboardGestionnaire onLogout={handleLogout} />;
+  }
+
+  // ✅ PERSONNEL = directeurs + chefs de département
+  if (role === "PERSONNEL") {
+    return <DashboardPersonnel onLogout={handleLogout} />;
+  }
+if (role === "CHAUFFEUR") {
+  return <DashboardChauffeur onLogout={handleLogout} />;
+}
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "center",
+      height: "100vh", fontFamily: "sans-serif", flexDirection: "column",
+      gap: 12, background: "#f5f4f0"
+    }}>
+      <div style={{ fontSize: 32 }}>🚗</div>
+      <div style={{ fontWeight: 800, fontSize: 20, letterSpacing: 2 }}>DRIVEPARC</div>
+      <div style={{ color: "#999", fontSize: 14 }}>
+        Dashboard <b>{role}</b> — à venir
+      </div>
+      <button onClick={handleLogout} style={{
+        marginTop: 16, padding: "10px 24px",
+        background: "#1a5d3b", color: "white",
+        border: "none", borderRadius: 8, cursor: "pointer",
+        fontWeight: "700", fontSize: 14
+      }}>
+        Se déconnecter
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;
