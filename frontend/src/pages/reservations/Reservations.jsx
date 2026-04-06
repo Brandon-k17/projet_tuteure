@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { apiFetch } from "../../utils/api";
 import { fmtDate, getCategorie } from "../../utils/api";
 import { C, S, M, VEHICLE_CATEGORIES } from "../../constants";
-import { Empty, Chip } from "../../components/Loader";
+import { Empty, Chip } from "../../components/";
 
 // ── TAB RÉSERVATIONS ──────────────────────────────────────────────────────────
 export function TabReservations({ reservations, vehicles, onRefresh }) {
