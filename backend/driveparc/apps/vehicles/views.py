@@ -28,28 +28,19 @@ class VehicleViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = Vehicle.objects.all()
-    
-        # Filtre statut
+        
         status = self.request.query_params.get('status')
+        assignment_type = self.request.query_params.get('assignment_type')
+        category = self.request.query_params.get('category')
+        
         if status:
             queryset = queryset.filter(status=status)
-    
-        # ← AJOUTER CE FILTRE
-        category = self.request.query_params.get('category')
+        if assignment_type:
+            queryset = queryset.filter(assignment_type=assignment_type)
         if category:
             queryset = queryset.filter(category=category)
-    
-        # Filtre recherche texte
-        search = self.request.query_params.get('search')
-        if search:
-            queryset = queryset.filter(
-                Q(registration_number__icontains=search) |
-                Q(make__icontains=search) |
-                Q(model__icontains=search) |
-                Q(internal_code__icontains=search)
-            )
-    
-        return queryset.order_by('-created_at')
+        
+        return queryset
  
  
 

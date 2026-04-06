@@ -165,7 +165,7 @@ class UserViewSet(viewsets.ModelViewSet):
     ViewSet pour la gestion des utilisateurs
     """
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated, CanManageUsers]
+    permission_classes = [IsAuthenticated]
     
     def get_serializer_class(self):
         if self.action == 'create':
@@ -206,6 +206,34 @@ class UserViewSet(viewsets.ModelViewSet):
             )
         
         return queryset
+
+    @action(detail=False, methods=['get', 'patch'], url_path='my-status')
+    def my_status(self, request):
+        """GET = lire le statut, PATCH = modifier le statut."""
+        try:
+            profile = request.user.driver_profile
+        except Exception:
+            if request.method == 'GET':
+                return Response({"manual_status": "DISPONIBLE"})
+            return Response({"error": "Profil chauffeur introuvable."}, status=404)
+
+        if request.method == 'GET':
+            return Response({
+                "manual_status": profile.manual_status,
+                "assignment_type": profile.assignment_type,
+                "bus_slot_start": str(profile.bus_slot_start) if profile.bus_slot_start else None,
+                "bus_slot_end":   str(profile.bus_slot_end)   if profile.bus_slot_end   else None,
+            })
+
+        # PATCH
+        status_val = request.data.get('manual_status')
+        valid = ["DISPONIBLE", "EN_MISSION", "INDISPONIBLE", "CONGE"]
+        if status_val not in valid:
+            return Response({"error": "Statut invalide"}, status=400)
+
+        profile.manual_status = status_val
+        profile.save()
+        return Response({"manual_status": profile.manual_status})
     
     def create(self, request, *args, **kwargs):
         """Créer un nouvel utilisateur"""
@@ -300,8 +328,80 @@ class UserViewSet(viewsets.ModelViewSet):
                 for role in USER_ROLES
             ]
         }, status=status.HTTP_200_OK)
+    @action(detail=False, methods=['post'], url_path='create-with-vehicle')
+    def create_with_vehicle(self, request):
+        serializer = UserCreateWithVehicleSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(UserSerializer(user).data, status=201)
 
+    @action(detail=True, methods=['patch'], url_path='update-with-vehicle')
+    def update_with_vehicle(self, request, pk=None):
+        user = self.get_object()
+        serializer = UserCreateWithVehicleSerializer(
+            user, data=request.data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(UserSerializer(user).data)
 
+from .models import StaffRegistry
+from .serializers import StaffRegistrySerializer
+
+class StaffRegistryViewSet(viewsets.ModelViewSet):
+    queryset           = StaffRegistry.objects.all()
+    serializer_class   = StaffRegistrySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        is_activated = self.request.query_params.get('is_activated')
+        role_hint    = self.request.query_params.get('role_hint')
+        search       = self.request.query_params.get('search')
+
+        if is_activated is not None:
+            queryset = queryset.filter(is_activated=is_activated.lower() == 'true')
+        if role_hint:
+            queryset = queryset.filter(role_hint=role_hint)
+        if search:
+            queryset = queryset.filter(
+                models.Q(employee_id__icontains=search) |
+                models.Q(first_name__icontains=search)  |
+                models.Q(last_name__icontains=search)
+            )
+        return queryset
+
+    @action(detail=False, methods=['get'], url_path='lookup')
+    def lookup(self, request):
+        """Vérifier un matricule et retourner les infos associées."""
+        employee_id = request.query_params.get('employee_id', '').strip()
+        if not employee_id:
+            return Response({'error': 'Matricule requis'}, status=400)
+
+        try:
+            entry = StaffRegistry.objects.get(employee_id=employee_id)
+            return Response({
+                'found':        True,
+                'is_activated': entry.is_activated,
+                'employee_id':  entry.employee_id,
+                'first_name':   entry.first_name,
+                'last_name':    entry.last_name,
+                'full_name':    entry.full_name,
+                'department':   entry.department_id,
+                'department_name': entry.department.name if entry.department else '',
+                'role_hint':    entry.role_hint,
+                'personnel_type_hint': entry.personnel_type_hint,
+            })
+        except StaffRegistry.DoesNotExist:
+            return Response({'found': False}, status=404)
+
+from .models import Department
+from .serializers import DepartmentSerializer
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+    permission_classes = [IsAuthenticated]
 class DriverProfileViewSet(viewsets.ModelViewSet):
     """
     ViewSet pour la gestion des profils chauffeurs

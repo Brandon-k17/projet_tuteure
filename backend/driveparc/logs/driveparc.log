@@ -296,3 +296,307 @@ WARNING 2026-03-30 07:04:43,285 log Not Found: /api/v1/vehicles/my-vehicle/
 WARNING 2026-03-30 07:05:44,247 log Bad Request: /api/v1/auth/logout/
 WARNING 2026-03-30 07:05:58,832 log Not Found: /api/v1/vehicles/my-vehicle/
 WARNING 2026-03-30 07:05:58,961 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 11:34:54,797 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 11:34:54,862 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-03-30 11:39:54,085 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-03-30 11:40:08,360 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-30 11:40:08,473 log Not Found: /api/v1/maintenance/
+WARNING 2026-03-30 11:41:19,679 log Not Found: /api/v1/users/
+WARNING 2026-03-30 11:41:19,729 log Not Found: /api/v1/users/
+INFO 2026-04-02 08:54:42,635 autoreload Watching for file changes with StatReloader
+INFO 2026-04-02 08:57:05,548 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-02 08:58:24,180 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 08:58:24,245 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 09:00:36,593 log Not Found: /api/v1/users/
+WARNING 2026-04-02 09:00:36,645 log Not Found: /api/v1/users/
+WARNING 2026-04-02 09:01:21,072 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-02 09:01:21,170 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-02 09:03:47,786 log Bad Request: /api/v1/auth/logout/
+WARNING 2026-04-02 09:06:09,925 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 09:06:10,023 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:23:27,430 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:23:27,494 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:35:20,704 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:35:22,224 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:36:04,162 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:36:05,198 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:36:20,156 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:36:51,234 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:36:54,148 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:37:55,236 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:37:57,192 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:38:07,273 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-02 11:38:14,172 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:18:11,434 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:18:11,517 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:38:01,698 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:38:01,742 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:40:14,014 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:40:14,046 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:41:07,381 log Not Found: /api/v1/maintenance/
+INFO 2026-04-03 04:53:29,774 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-03 04:53:31,224 autoreload Watching for file changes with StatReloader
+INFO 2026-04-03 04:53:37,020 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-03 04:53:37,799 autoreload Watching for file changes with StatReloader
+INFO 2026-04-03 04:56:25,440 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-03 04:59:32,731 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 04:59:32,809 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 05:09:27,825 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 05:09:27,869 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-03 05:23:28,924 log Bad Request: /api/v1/vehicles/
+WARNING 2026-04-03 05:25:05,336 log Bad Request: /api/v1/vehicles/
+WARNING 2026-04-03 05:29:16,219 log Bad Request: /api/v1/vehicles/
+WARNING 2026-04-05 05:48:29,949 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 05:48:30,009 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 06:21:07,881 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 06:21:09,076 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 06:24:26,949 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:24:27,043 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:29:24,443 log Not Found: /api/v1/users/
+WARNING 2026-04-05 06:29:24,467 log Not Found: /api/v1/users/
+INFO 2026-04-05 06:37:16,603 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\views.py changed, reloading.
+INFO 2026-04-05 06:37:17,353 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:37:24,175 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\views.py changed, reloading.
+INFO 2026-04-05 06:37:24,838 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:37:27,404 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\views.py changed, reloading.
+INFO 2026-04-05 06:37:28,076 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:40:51,913 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:40:54,256 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:01,177 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:03,018 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:05,300 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:07,131 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:17,998 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:19,770 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:29,065 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:30,964 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:33,544 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:35,207 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:41:53,623 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:41:55,765 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:42:01,762 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:42:03,548 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:42:05,859 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:42:07,657 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 06:42:12,733 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\reservations\views.py changed, reloading.
+INFO 2026-04-05 06:42:14,559 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 06:42:43,379 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:43:08,954 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:43:47,115 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:43:47,209 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:51:41,273 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:53:38,967 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 06:53:48,595 log Not Found: /api/v1/users/
+WARNING 2026-04-05 06:53:48,667 log Not Found: /api/v1/users/
+WARNING 2026-04-05 06:54:13,316 log Not Found: /api/v1/users/
+WARNING 2026-04-05 06:54:13,371 log Not Found: /api/v1/users/
+WARNING 2026-04-05 07:10:24,727 log Not Found: /api/v1/users/
+ERROR 2026-04-05 07:15:29,481 log Internal Server Error: /api/v1/reservations/2/approve/
+WARNING 2026-04-05 07:16:26,428 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 07:16:26,556 log Not Found: /api/v1/vehicles/my-vehicle/
+INFO 2026-04-05 07:35:38,459 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 07:35:40,505 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:36:41,246 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 07:36:43,419 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:36:55,292 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 07:36:57,200 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:37:00,528 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 07:37:02,794 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:37:33,618 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 07:37:35,829 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:10,321 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:38:12,083 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:24,643 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:38:26,646 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:43,060 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:38:45,060 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:48,700 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:38:50,775 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:53,989 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:38:55,713 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:38:58,149 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:39:00,124 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:39:24,094 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:39:25,700 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:39:30,517 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:39:32,631 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:39:37,500 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:39:39,264 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 07:39:46,181 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 07:39:48,213 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 07:44:14,322 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 07:44:14,540 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 07:58:34,445 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 07:58:35,890 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 07:58:37,600 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 07:59:00,089 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 07:59:00,190 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 07:59:02,956 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 07:59:03,048 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-04-05 07:59:05,983 log Not Found: /api/v1/users/
+WARNING 2026-04-05 07:59:06,090 log Not Found: /api/v1/users/
+WARNING 2026-04-05 08:04:15,981 log Not Found: /api/v1/users/
+WARNING 2026-04-05 08:04:16,061 log Not Found: /api/v1/users/
+WARNING 2026-04-05 08:04:38,340 log Not Found: /api/v1/users/
+WARNING 2026-04-05 08:08:17,220 log Not Found: /api/v1/
+WARNING 2026-04-05 08:08:25,838 log Not Found: /api/v1/users/
+WARNING 2026-04-05 08:08:35,107 log Forbidden: /api/v1/auth/users/
+WARNING 2026-04-05 08:11:56,258 log Forbidden: /api/v1/auth/users/
+INFO 2026-04-05 08:13:50,178 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:13:52,046 autoreload Watching for file changes with StatReloader
+ERROR 2026-04-05 08:14:55,510 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-04-05 08:16:34,966 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:16:35,019 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:16:35,049 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:16:35,099 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:16:40,029 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:16:53,432 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:16:53,443 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:16:53,484 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:16:53,527 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:16:58,115 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:17:08,249 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 08:17:08,309 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 08:17:10,544 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 08:17:10,596 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-04-05 08:24:46,355 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:24:46,413 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:24:46,445 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:24:46,494 log Not Found: /api/v1/users/my-status/
+ERROR 2026-04-05 08:25:16,314 log Internal Server Error: /api/v1/auth/users/my-status/
+WARNING 2026-04-05 08:39:41,272 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:39:48,656 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:39:48,680 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:39:48,702 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:39:48,730 log Not Found: /api/v1/users/my-status/
+WARNING 2026-04-05 08:39:52,725 log Not Found: /api/v1/users/my-status/
+INFO 2026-04-05 08:40:53,834 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:40:54,475 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:00,558 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:01,197 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:11,126 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:11,732 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:14,259 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:15,089 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:43,424 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:44,159 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:46,815 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:47,490 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 08:41:54,598 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 08:41:55,189 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 08:43:41,841 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:43:41,887 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:43:49,920 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 08:43:49,950 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 08:43:51,943 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 08:43:51,962 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-04-05 08:44:10,520 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:44:10,557 log Not Found: /api/v1/vehicles/my-vehicle/
+INFO 2026-04-05 08:46:35,102 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 08:46:35,867 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 08:46:47,216 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 08:46:47,261 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 08:46:50,564 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 08:46:50,589 log Internal Server Error: /api/v1/reservations/
+WARNING 2026-04-05 08:47:19,861 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:47:19,906 log Not Found: /api/v1/vehicles/my-vehicle/
+WARNING 2026-04-05 08:47:28,527 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 08:47:28,557 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 08:47:30,606 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 08:47:30,624 log Internal Server Error: /api/v1/reservations/
+INFO 2026-04-05 11:24:16,032 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:24:18,473 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:25:02,214 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:25:04,060 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:25:33,487 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:25:35,600 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:26:11,997 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 11:26:13,868 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:33:19,926 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:33:22,248 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:39:01,719 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:39:04,009 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:39:08,443 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 11:39:10,337 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:39:59,843 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 11:40:01,761 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:40:07,676 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 11:40:09,734 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 11:40:34,908 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 11:40:36,626 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 11:42:19,719 log Unauthorized: /api/v1/reservations/
+WARNING 2026-04-05 11:42:19,725 log Unauthorized: /api/v1/reservations/
+WARNING 2026-04-05 11:42:35,717 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 11:42:35,720 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-04-05 11:42:35,771 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 11:42:35,850 log Internal Server Error: /api/v1/vehicles/
+ERROR 2026-04-05 11:51:01,190 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-04-05 11:51:01,224 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 11:51:01,325 log Internal Server Error: /api/v1/vehicles/
+WARNING 2026-04-05 11:51:01,347 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 11:52:41,006 log Internal Server Error: /api/v1/vehicles/
+INFO 2026-04-05 11:54:11,505 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 11:54:13,455 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 11:54:37,520 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 11:54:37,618 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 12:27:23,964 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 12:27:26,225 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:27:45,499 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 12:27:47,661 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:27:50,249 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 12:27:52,525 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:29:02,398 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 12:29:04,092 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:29:48,642 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 12:29:50,748 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:30:06,129 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 12:30:08,336 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:30:48,211 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 12:30:50,244 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:30:53,668 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 12:30:55,949 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 12:31:20,093 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 12:31:22,068 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 12:39:51,840 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 13:33:47,110 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 13:33:47,150 log Not Found: /api/v1/maintenance/
+ERROR 2026-04-05 13:45:00,134 log Internal Server Error: /api/v1/auth/users/create-with-vehicle/
+INFO 2026-04-05 13:54:47,202 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\serializers.py changed, reloading.
+INFO 2026-04-05 13:54:48,073 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 14:01:33,806 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 19:27:52,805 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 19:27:52,898 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 19:31:35,684 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 19:31:41,578 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 19:32:08,159 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 19:32:10,092 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:32:38,312 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 19:32:40,254 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:32:45,875 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 19:32:48,051 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:33:05,287 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 19:33:07,428 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:33:41,260 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 19:33:43,210 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:38:31,485 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 19:38:33,387 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:39:22,476 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 19:39:24,381 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:39:42,416 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 19:39:44,606 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:39:56,567 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 19:39:58,884 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 19:51:01,277 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 19:51:01,372 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 20:05:13,079 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 20:05:15,647 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 20:05:44,853 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 20:05:47,108 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 20:07:50,582 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 20:07:52,744 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 20:08:13,625 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 20:08:15,545 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 20:08:35,471 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 20:08:37,511 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 20:08:52,323 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 20:08:54,187 autoreload Watching for file changes with StatReloader

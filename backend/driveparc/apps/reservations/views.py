@@ -56,48 +56,26 @@ class ReservationViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_201_CREATED)
  
     # ── APPROBATION par le gestionnaire ───────────────────────────────────────
-    @action(detail=True, methods=['post'], url_path='approve')
+    @action(detail=True, methods=['post'])
     def approve(self, request, pk=None):
-        """
-        POST /api/v1/reservations/{id}/approve/
-        Body (optionnel): { "vehicle": <id>, "driver": <id> }
-        """
-        if request.user.role not in ('ADMIN', 'GESTIONNAIRE'):
-            return Response({'success': False, 'message': 'Non autorisé.'}, status=403)
- 
         reservation = self.get_object()
- 
-        if reservation.status != 'EN_ATTENTE':
-            return Response({
-                'success': False,
-                'message': f'Impossible d\'approuver : statut actuel = {reservation.status}'
-            }, status=400)
- 
-        # Assigner le véhicule si fourni maintenant
         vehicle_id = request.data.get('vehicle')
         driver_id  = request.data.get('driver')
- 
+
         if vehicle_id:
             from apps.vehicles.models import Vehicle
-            try:
-                reservation.vehicle = Vehicle.objects.get(id=vehicle_id)
-            except Vehicle.DoesNotExist:
-                return Response({'success': False, 'message': 'Véhicule introuvable.'}, status=400)
- 
+            vehicle = Vehicle.objects.get(id=vehicle_id)
+            reservation.vehicle = vehicle
+            # ← Passe EN_SERVICE pour la durée de la réservation
+            vehicle.status = 'EN_SERVICE'
+            vehicle.save()
+
         if driver_id:
             from apps.users.models import User
-            try:
-                reservation.driver = User.objects.get(id=driver_id, role='CHAUFFEUR')
-            except User.DoesNotExist:
-                return Response({'success': False, 'message': 'Chauffeur introuvable.'}, status=400)
- 
-        reservation.approve(approved_by=request.user)  # méthode du modèle
- 
-        return Response({
-            'success': True,
-            'message': 'Réservation approuvée.',
-            'data': ReservationSerializer(reservation).data
-        })
+            reservation.driver = User.objects.get(id=driver_id)
+
+        reservation.approve(approved_by=request.user)
+        return Response(ReservationSerializer(reservation).data)
  
     # ── REJET ─────────────────────────────────────────────────────────────────
     @action(detail=True, methods=['post'], url_path='reject')

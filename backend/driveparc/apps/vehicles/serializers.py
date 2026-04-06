@@ -19,6 +19,19 @@ class VehicleSerializer(serializers.ModelSerializer):
         model = Vehicle
         fields = '__all__'
         read_only_fields = ['id', 'created_at', 'updated_at']
+        
+    def validate(self, data):
+        assignment_type = data.get('assignment_type', self.instance.assignment_type if self.instance else 'POOL')
+        
+        if assignment_type == 'FONCTION':
+            # Vérifier qu'aucun directeur n'est déjà lié à ce véhicule
+            vehicle = self.instance
+            if vehicle and hasattr(vehicle, 'director_user'):
+                director = vehicle.director_user
+                raise serializers.ValidationError({
+                    "assignment_type": f"Ce véhicule est déjà assigné au directeur {director.get_full_name()}. Désassignez-le d'abord depuis la fiche utilisateur."
+                })
+        return data
 
 
 class VehicleCreateSerializer(serializers.ModelSerializer):
@@ -30,15 +43,33 @@ class VehicleCreateSerializer(serializers.ModelSerializer):
 
 
 class VehicleListSerializer(serializers.ModelSerializer):
-    """Serializer simplifié pour la liste des véhicules"""
-    
+    bus_driver_info    = serializers.SerializerMethodField()
+    director_user_id   = serializers.SerializerMethodField()  # ← nouveau
+
     class Meta:
         model = Vehicle
         fields = [
             'id', 'registration_number', 'internal_code', 'make', 'model',
-            'year', 'vehicle_type', 'status', 'current_mileage', 'photo','category'
+            'year', 'vehicle_type', 'status', 'current_mileage', 'photo',
+            'category', 'assignment_type', 'assigned_director',
+            'seating_capacity', 'bus_driver', 'bus_driver_info',
+            'director_user_id',  # ← nouveau
         ]
 
+    def get_bus_driver_info(self, obj):
+        if obj.bus_driver:
+            return {
+                "id":        obj.bus_driver.id,
+                "full_name": obj.bus_driver.get_full_name(),
+                "phone":     obj.bus_driver.phone,
+            }
+        return None
+
+    def get_director_user_id(self, obj):  # ← nouveau
+        try:
+            return obj.director_user.id
+        except Exception:
+            return None
 
 class VehicleAssignmentSerializer(serializers.ModelSerializer):
     """Serializer pour l'affectation de véhicules"""
