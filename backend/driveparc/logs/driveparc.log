@@ -617,3 +617,23 @@ WARNING 2026-04-05 20:46:20,311 log Not Found: /api/v1/maintenance/
 WARNING 2026-04-05 20:46:20,409 log Not Found: /api/v1/maintenance/
 WARNING 2026-04-05 20:48:08,914 log Not Found: /api/v1/maintenance/
 WARNING 2026-04-05 20:48:09,030 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:52:14,514 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:52:14,662 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:53:09,695 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:53:09,801 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:54:05,718 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:54:05,793 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:54:56,147 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:54:56,229 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 20:56:25,351 autoreload Watching for file changes with StatReloader
+WARNING 2026-04-05 20:56:48,393 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 20:56:48,501 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 21:00:17,452 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 21:00:17,584 log Not Found: /api/v1/maintenance/
+WARNING 2026-04-05 21:00:17,896 log Not Found: /api/v1/maintenance/
+INFO 2026-04-05 21:04:02,250 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 21:04:04,475 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:04:07,942 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 21:04:09,819 autoreload Watching for file changes with StatReloader
+ERROR 2026-04-05 21:04:22,118 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 21:04:22,226 log Internal Server Error: /api/v1/reservations/
