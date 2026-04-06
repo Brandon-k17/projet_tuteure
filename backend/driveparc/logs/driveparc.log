@@ -676,3 +676,5 @@ WARNING 2026-04-05 21:25:00,040 log Not Found: /api/v1/maintenance/
 WARNING 2026-04-05 21:25:00,162 log Not Found: /api/v1/maintenance/
 ERROR 2026-04-05 21:25:03,816 log Internal Server Error: /api/v1/reservations/
 ERROR 2026-04-05 21:25:03,871 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 21:26:57,963 log Internal Server Error: /api/v1/reservations/
+ERROR 2026-04-05 21:26:58,042 log Internal Server Error: /api/v1/reservations/
