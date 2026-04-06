@@ -639,3 +639,29 @@ ERROR 2026-04-05 21:04:22,118 log Internal Server Error: /api/v1/reservations/
 ERROR 2026-04-05 21:04:22,226 log Internal Server Error: /api/v1/reservations/
 INFO 2026-04-05 21:14:02,849 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
 INFO 2026-04-05 21:14:04,676 autoreload Watching for file changes with StatReloader
+ERROR 2026-04-05 21:18:49,979 log Internal Server Error: /api/v1/auth/login/
+ERROR 2026-04-05 21:19:07,758 log Internal Server Error: /api/v1/auth/login/
+INFO 2026-04-05 21:19:52,294 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\urls.py changed, reloading.
+INFO 2026-04-05 21:19:54,036 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:01,713 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\views.py changed, reloading.
+INFO 2026-04-05 21:20:03,441 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:06,380 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 21:20:08,041 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:13,657 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 21:20:14,967 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:19,085 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 21:20:20,779 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:27,475 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 21:20:29,379 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:35,955 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 21:20:37,317 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:20:40,340 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 21:20:42,490 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:21:35,764 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\vehicles\models.py changed, reloading.
+INFO 2026-04-05 21:21:37,457 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:23:09,373 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 21:23:10,839 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:23:14,037 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\serializers.py changed, reloading.
+INFO 2026-04-05 21:23:15,910 autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 21:23:32,600 autoreload C:\Users\DELL\projet_tuteure\backend\driveparc\apps\users\models.py changed, reloading.
+INFO 2026-04-05 21:23:34,129 autoreload Watching for file changes with StatReloader

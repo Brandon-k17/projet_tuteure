@@ -61,6 +61,34 @@ class Vehicle(BaseModel):
         default="TOURISME",
         help_text="TOURISME=<10 places, UTILITAIRE=10-19 places, BUS=20+ places"
     )
+
+    # 👇 Ajouter ces deux champs juste ici
+    ASSIGNMENT_TYPE_CHOICES = [
+        ("POOL",     "Parc commun"),
+        ("FONCTION", "Voiture de fonction"),
+        ("BUS_SCOLAIRE", "Bus scolaire"),
+    ]
+    assignment_type = models.CharField(
+        _('Type d\'affectation'),
+        max_length=20,
+        choices=ASSIGNMENT_TYPE_CHOICES,
+        default="POOL"
+    )
+    assigned_director = models.CharField(
+        _('Directeur assigné'),
+        max_length=150,
+        blank=True,
+        default=""
+    )
+    bus_driver = models.ForeignKey(
+    'users.User',
+    on_delete=models.SET_NULL,
+    null=True,
+    blank=True,
+    related_name='bus_assignments',
+    verbose_name=_('Chauffeur bus assigné'),
+    help_text="Uniquement pour les bus scolaires — ramassage matin"
+    )
     fuel_type = models.CharField(
         _('Type de carburant'),
         max_length=20,

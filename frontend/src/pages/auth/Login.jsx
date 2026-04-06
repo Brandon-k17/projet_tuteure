@@ -181,7 +181,7 @@ export default function LoginScreen({ onLogin }) {  // ✅ Exporté
         {/* ── DROITE : Image voiture ────────────────────────────────── */}
         <div className="dp-image-section">
           <img
-            src="/assets/image.png"
+            src="/assets/im.jpeg"
             alt="Voiture de sport"
             className="dp-car-img"
           />

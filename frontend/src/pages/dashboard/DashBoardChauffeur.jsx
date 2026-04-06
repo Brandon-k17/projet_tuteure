@@ -115,25 +115,32 @@ export default function DashboardChauffeur({ onLogout }) {
   const [trajetActif,   setTrajetActif]   = useState(null); // trajet en cours
   const [showPanne,     setShowPanne]     = useState(false);
   const [showCarburant, setShowCarburant] = useState(false);
+  const [myStatus, setMyStatus] = useState("DISPONIBLE");
 
   useEffect(() => {
     (async () => {
       setLoading(true);
       try {
-        const [u, v, planning, trajets, notifs] = await Promise.all([
-          apiFetch("/auth/profile/").catch(() => null),
-          apiFetch("/vehicles/my-vehicle/").catch(() => null),
-          apiFetch("/reservations/?driver=me").catch(() => null),
-          apiFetch("/reservations/?driver=me&status=TERMINEE").catch(() => null),
-          apiFetch("/notifications/").catch(() => null),
-        ]);
-        setData({
-          user:          u          ?? MOCK.user,
-          vehicule:      v          ?? MOCK.vehicule,
-          planning:      Array.isArray(planning) ? planning : planning?.results ?? MOCK.planning,
-          trajets:       Array.isArray(trajets)  ? trajets  : trajets?.results  ?? MOCK.trajets,
-          notifications: Array.isArray(notifs)   ? notifs   : notifs?.results   ?? MOCK.notifications,
-        });
+       // Dans le useEffect, ajoute cet appel
+const [u, v, planning, trajets, notifs, driverProfile] = await Promise.all([
+  apiFetch("/auth/profile/").catch(() => null),
+  apiFetch("/vehicles/my-vehicle/").catch(() => null),
+  apiFetch("/reservations/?driver=me").catch(() => null),
+  apiFetch("/reservations/?driver=me&status=TERMINEE").catch(() => null),
+  apiFetch("/notifications/").catch(() => null),
+ apiFetch("/auth/users/my-status/").catch(() => null),
+]);
+setData({
+  user:          u             ?? MOCK.user,
+  vehicule:      v             ?? MOCK.vehicule,
+  planning:      Array.isArray(planning) ? planning : planning?.results ?? MOCK.planning,
+  trajets:       Array.isArray(trajets)  ? trajets  : trajets?.results  ?? MOCK.trajets,
+  notifications: Array.isArray(notifs)   ? notifs   : notifs?.results   ?? MOCK.notifications,
+  driverProfile: driverProfile ?? null,  // ← nouveau
+});
+if (driverProfile?.manual_status) {
+  setMyStatus(driverProfile.manual_status);
+}
       } catch {
         setData(MOCK);
       } finally { setLoading(false); }
@@ -231,6 +238,8 @@ export default function DashboardChauffeur({ onLogout }) {
               onPanne={() => setShowPanne(true)}
               onCarburant={() => setShowCarburant(true)}
               setTab={setTab}
+              myStatus={myStatus}          // ← nouveau
+              setMyStatus={setMyStatus}
             />
           )}
           {tab === "planning"     && <TabPlanning     planning={planning} trajetActif={trajetActif} setTrajetActif={setTrajetActif} />}
@@ -250,9 +259,16 @@ export default function DashboardChauffeur({ onLogout }) {
 }
 
 // ── Tab Dashboard ─────────────────────────────────────────────────────────────
-function TabDashboard({ user, vehicule, planning, trajetActif, setTrajetActif, onPanne, onCarburant, setTab }) {
+// ── Tab Dashboard ─────────────────────────────────────────────────────────────
+// REMPLACE les deux fonctions TabDashboard imbriquées par celle-ci UNIQUEMENT
+
+function TabDashboard({ user, vehicule, planning, trajetActif, setTrajetActif,
+  onPanne, onCarburant, setTab, myStatus, setMyStatus }) {
   return (
     <div style={{ display:"flex", flexDirection:"column", gap:18 }}>
+
+      {/* Toggle disponibilité */}
+      <ToggleDisponibilite status={myStatus} onChange={setMyStatus} />
 
       {/* Actions rapides */}
       <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14 }}>
@@ -285,10 +301,10 @@ function TabDashboard({ user, vehicule, planning, trajetActif, setTrajetActif, o
             <StatusBadge status={vehicule.status} />
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:10 }}>
-            <MiniCard icon="🚌" label="Véhicule"     value={`${vehicule.brand} ${vehicule.model}`} />
+            <MiniCard icon="🚌" label="Véhicule"        value={`${vehicule.brand} ${vehicule.model}`} />
             <MiniCard icon="🪪" label="Immatriculation" value={vehicule.license_plate} bold />
-            <MiniCard icon="📍" label="Kilométrage"  value={`${Number(vehicule.mileage||0).toLocaleString("fr-FR")} km`} />
-            <MiniCard icon="⛽" label="Carburant"    value={`${vehicule.fuel_level ?? "—"} %`} color={vehicule.fuel_level < 25 ? C.red : C.green} />
+            <MiniCard icon="📍" label="Kilométrage"     value={`${Number(vehicule.mileage||0).toLocaleString("fr-FR")} km`} />
+            <MiniCard icon="⛽" label="Carburant"       value={`${vehicule.fuel_level ?? "—"} %`} color={vehicule.fuel_level < 25 ? C.red : C.green} />
           </div>
         </div>
       )}
@@ -395,7 +411,58 @@ function PlanningCard({ p, trajetActif, setTrajetActif, full }) {
     </div>
   );
 }
+function ToggleDisponibilite({ status, onChange }) {
+  const [loading, setLoading] = useState(false);
 
+  const options = [
+    { val:"DISPONIBLE",   label:"Disponible",   color:C.green, bg:C.greenLight, icon:"🟢" },
+    { val:"INDISPONIBLE", label:"Indisponible",  color:C.red,   bg:C.redLight,   icon:"🔴" },
+    { val:"CONGE",        label:"En congé",      color:"#888",  bg:"#F5F5F5",    icon:"🏖️" },
+  ];
+
+  const handleChange = async (val) => {
+    if (val === status) return;
+    setLoading(true);
+    try {
+      const token = localStorage.getItem("access_token");
+      await fetch(`${API_BASE}/auth/users/my-status/`, {
+        method: "PATCH",
+        headers: { "Content-Type":"application/json", Authorization:`Bearer ${token}` },
+        body: JSON.stringify({ manual_status: val }),
+      });
+      onChange(val);
+    } catch { alert("Erreur mise à jour statut"); }
+    finally { setLoading(false); }
+  };
+
+  const current = options.find(o => o.val === status) || options[0];
+
+  return (
+    <div style={{ background:current.bg, border:`1.5px solid ${current.color}30`,
+      borderRadius:10, padding:"12px 16px", display:"flex", alignItems:"center",
+      justifyContent:"space-between", flexWrap:"wrap", gap:10 }}>
+      <div>
+        <div style={{ fontSize:10, fontWeight:700, color:current.color,
+          textTransform:"uppercase", letterSpacing:"1px" }}>
+          Mon statut aujourd'hui
+        </div>
+        <div style={{ fontSize:16, fontWeight:800, color:C.text, marginTop:3 }}>
+          {current.icon} {current.label}
+        </div>
+      </div>
+      <div style={{ display:"flex", gap:6 }}>
+        {options.filter(o => o.val !== status).map(o => (
+          <button key={o.val} onClick={() => handleChange(o.val)} disabled={loading}
+            style={{ padding:"6px 12px", borderRadius:7, fontSize:11, fontWeight:700,
+              cursor:"pointer", fontFamily:"inherit", border:`1.5px solid ${o.color}30`,
+              background: o.bg, color: o.color, opacity: loading ? 0.6 : 1 }}>
+            {o.icon} {o.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 // ── Tab Mon Véhicule ──────────────────────────────────────────────────────────
 function TabVehicule({ vehicule, onPanne }) {
   if (!vehicule) return <div style={S.section}><Empty text="Aucun véhicule assigné" /></div>;
