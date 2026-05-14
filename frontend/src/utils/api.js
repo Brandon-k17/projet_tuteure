@@ -15,15 +15,25 @@ export async function apiFetch(path, options = {}) {
       ...options.headers,
     },
   });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(JSON.stringify(err) || `Erreur ${res.status}`);
-  }
+
   if (res.status === 204) return null;
-  const json = await res.json();
+
+  const json = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    const detail =
+      json?.error?.detail ||          // ← ton format custom avec detail
+      json?.error?.message ||
+      json?.detail ||
+      (json?.errors ? JSON.stringify(json.errors) : null) ||
+      JSON.stringify(json);
+
+    console.error("❌ Réponse complète du serveur :", json); // ← log tout
+    throw new Error(typeof detail === "object" ? JSON.stringify(detail) : detail);
+  }
+
   return json?.data ?? json;
 }
-
 export async function apiUpload(path, formData, method = "PATCH") {
   const res = await fetch(`${API_BASE}${path}`, {
     method,

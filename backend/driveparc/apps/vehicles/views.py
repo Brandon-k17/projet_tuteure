@@ -7,10 +7,12 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Vehicle, VehicleAssignment, VehicleInsurance, VehicleDocument
+# En haut du fichier, remplace la ligne models par :
+from .models import Vehicle, VehicleAssignment, VehicleInsurance, VehicleDocument, BusRoute, BusRouteLog
 from .serializers import (
     VehicleSerializer, VehicleListSerializer, VehicleCreateSerializer,
-    VehicleAssignmentSerializer, VehicleInsuranceSerializer, VehicleDocumentSerializer
+    VehicleAssignmentSerializer, VehicleInsuranceSerializer, VehicleDocumentSerializer, BusRouteSerializer,       # ← manquait
+    BusRouteLogSerializer, VehicleDriverSerializer, 
 )
 
 
@@ -42,7 +44,47 @@ class VehicleViewSet(viewsets.ModelViewSet):
         
         return queryset
  
- 
+    
+
+    def perform_update(self, serializer):
+        old = self.get_object()
+        director_user_id = self.request.data.get('director_user_id')
+        bus_driver_id    = self.request.data.get('bus_driver')
+
+        instance = serializer.save()
+
+        from apps.users.models import User
+
+        # ── Véhicule de FONCTION ───────────────────────────────────────────────
+        if instance.assignment_type == 'FONCTION':
+            if director_user_id:
+                try:
+                    # Libérer l'ancien directeur lié à ce véhicule
+                    User.objects.filter(assigned_vehicle=instance).update(assigned_vehicle=None)
+                    user = User.objects.get(id=director_user_id)
+                    user.assigned_vehicle = instance
+                    user.save()
+                    instance.assigned_director = user.get_full_name()
+                    instance.save()
+                except User.DoesNotExist:
+                    pass
+
+        # ── Retour au POOL → libérer le directeur ─────────────────────────────
+        elif instance.assignment_type == 'POOL':
+            User.objects.filter(assigned_vehicle=instance).update(assigned_vehicle=None)
+            if instance.assigned_director:
+                instance.assigned_director = ""
+                instance.save()
+
+        # ── BUS SCOLAIRE → assigner le chauffeur ──────────────────────────────
+        elif instance.assignment_type == 'BUS_SCOLAIRE':
+            if bus_driver_id:
+                try:
+                    driver = User.objects.get(id=bus_driver_id)
+                    instance.bus_driver = driver
+                    instance.save()
+                except User.DoesNotExist:
+                    pass
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -109,6 +151,27 @@ class VehicleViewSet(viewsets.ModelViewSet):
             )
         vehicle.update_mileage(new_mileage)
         return Response(VehicleSerializer(vehicle, context={'request': request}).data)
+    
+    @action(detail=False, methods=['get'], url_path='my-vehicle')
+    def my_vehicle(self, request):
+        """GET /api/v1/vehicles/my-vehicle/ — véhicule assigné à l'utilisateur connecté"""
+        user = request.user
+
+        # Chauffeur bus scolaire → vehicle.bus_driver = user
+        vehicle = Vehicle.objects.filter(bus_driver=user).first()
+
+        # Directeur → vehicle.assigned_director lié via assigned_vehicle
+        if not vehicle and hasattr(user, 'assigned_vehicle') and user.assigned_vehicle:
+            vehicle = user.assigned_vehicle
+
+        if not vehicle:
+            return Response(
+                {"detail": "Aucun véhicule assigné."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = VehicleSerializer(vehicle, context={'request': request})
+        return Response(serializer.data)
 
 
 class VehicleAssignmentViewSet(viewsets.ModelViewSet):
@@ -134,3 +197,17 @@ class VehicleDocumentViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['vehicle', 'document_type']
+
+# apps/vehicles/views.py (ajout)
+
+class BusRouteViewSet(viewsets.ModelViewSet):
+    serializer_class   = BusRouteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        from .models import BusRoute
+        user = self.request.user
+        # Si chauffeur → son bus uniquement
+        if hasattr(user, 'role') and user.role == 'CHAUFFEUR':
+            return BusRoute.objects.filter(vehicle__bus_driver=user).select_related('vehicle')
+        return BusRoute.objects.select_related('vehicle').all()

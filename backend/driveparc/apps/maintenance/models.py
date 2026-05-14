@@ -217,10 +217,12 @@ class Breakdown(BaseModel):
         _('Description détaillée')
     )
     location = models.CharField(
-        _('Localisation'),
-        max_length=200,
-        help_text="Lieu où la panne s'est produite"
-    )
+    _('Localisation'),
+    max_length=200,
+    blank=True,      # ← AJOUT
+    default='',      # ← AJOUT
+    help_text="Lieu où la panne s'est produite"
+)
     
     # Dates
     reported_date = models.DateTimeField(
@@ -368,3 +370,5 @@ class Breakdown(BaseModel):
         self.resolved_date = timezone.now()
         self.vehicle.mark_as_out_of_service()
         self.save()
+
+

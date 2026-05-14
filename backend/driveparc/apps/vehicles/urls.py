@@ -6,13 +6,17 @@ from .views import (
     VehicleAssignmentViewSet,
     VehicleInsuranceViewSet,
     VehicleDocumentViewSet,
+    BusRouteViewSet,
 )
 
 router = SimpleRouter()
-router.register(r'',            VehicleViewSet,           basename='vehicles')
+
+# ← bus-routes AVANT le registre vide, sinon r'' capture tout
+router.register(r'bus-routes',  BusRouteViewSet,          basename='bus-routes')
 router.register(r'assignments', VehicleAssignmentViewSet, basename='vehicle-assignments')
 router.register(r'insurances',  VehicleInsuranceViewSet,  basename='vehicle-insurances')
 router.register(r'documents',   VehicleDocumentViewSet,   basename='vehicle-documents')
+router.register(r'',            VehicleViewSet,           basename='vehicles')  # ← toujours en dernier
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -19,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'email', 'first_name', 'last_name', 'full_name',
             'phone', 'role', 'role_display', 'department', 'department_name',
-            'employee_id', 'personnel_type', 'assigned_vehicle',
+            'employee_id','personnel_type', 'school', 'personnel_type', 'assigned_vehicle',
             'profile_picture', 'email_verified', 'is_active',
             'created_at', 'updated_at', 'last_login', 'driver_profile',
         ]
@@ -83,13 +83,32 @@ class UserCreateSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+"""
+UserCreateWithVehicleSerializer — version simplifiée
+Remplace l'ancienne version dans apps/users/serializers.py
+La seule contrainte : matricule unique + email unique (géré par Django)
+Le registre est alimenté automatiquement à la création.
+"""
+
+from apps.vehicles.models import Vehicle  # ← ajouter en haut du fichier
+
 class UserCreateWithVehicleSerializer(serializers.ModelSerializer):
-    password         = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(write_only=True, required=False, default="driveparc2026!")
     assigned_vehicle = serializers.PrimaryKeyRelatedField(
-        queryset=__import__('apps.vehicles.models', fromlist=['Vehicle']).Vehicle.objects.filter(
-            assignment_type='FONCTION'
-        ),
-        required=False, allow_null=True
+        queryset=Vehicle.objects.all(),
+        required=False,
+        allow_null=True
+    )
+    # Champs chauffeur optionnels
+    driver_assignment_type = serializers.CharField(required=False, allow_blank=True)
+    license_number         = serializers.CharField(required=False, allow_blank=True)
+    license_category       = serializers.CharField(required=False, allow_blank=True)
+    license_expiry_date    = serializers.DateField(required=False, allow_null=True)
+    years_of_experience    = serializers.IntegerField(required=False, default=0)
+    assigned_bus           = serializers.PrimaryKeyRelatedField(
+        queryset=Vehicle.objects.all(),
+        required=False,
+        allow_null=True
     )
 
     class Meta:
@@ -97,53 +116,68 @@ class UserCreateWithVehicleSerializer(serializers.ModelSerializer):
         fields = [
             'email', 'password', 'first_name', 'last_name',
             'phone', 'role', 'personnel_type', 'department',
-            'employee_id', 'assigned_vehicle',
+            'employee_id', 'assigned_vehicle','school',
+            'driver_assignment_type', 'license_number', 'license_category',
+            'license_expiry_date', 'years_of_experience', 'assigned_bus',
         ]
 
-    def validate_assigned_vehicle(self, vehicle):
-        # Anti-doublon : véhicule déjà assigné à un autre directeur ?
-        if vehicle and hasattr(vehicle, 'director_user'):
-            existing = vehicle.director_user
-            # Si on est en update, ignorer l'utilisateur actuel
-            if self.instance and existing == self.instance:
-                return vehicle
-            raise serializers.ValidationError(
-                f"Ce véhicule est déjà assigné à {existing.get_full_name()}."
-            )
-        return vehicle
-
     def validate_employee_id(self, value):
-        """Le matricule doit exister dans le registre et ne pas être déjà activé."""
         if not value:
             raise serializers.ValidationError("Le matricule est obligatoire.")
-
-        try:
-            entry = StaffRegistry.objects.get(employee_id=value)
-        except StaffRegistry.DoesNotExist:
+        qs = User.objects.filter(employee_id=value)
+        if self.instance:
+            qs = qs.exclude(pk=self.instance.pk)
+        if qs.exists():
             raise serializers.ValidationError(
-                f"Matricule '{value}' introuvable dans le registre du personnel IUC. "
-                "Ajoutez d'abord ce membre dans le registre."
+                f"Le matricule '{value}' est déjà utilisé."
             )
-
-        if entry.is_activated:
-            raise serializers.ValidationError(
-                f"Un compte existe déjà pour le matricule '{value}' "
-                f"({entry.full_name})."
-            )
-
         return value
 
+    def validate_assigned_vehicle(self, vehicle):
+        if vehicle:
+            # Vérifier si le véhicule est déjà utilisé par QUELQU'UN D'AUTRE
+            # On suppose que le modèle Vehicle a un champ 'director_user' (OneToOne) 
+            # ou que l'on cherche si un User pointe déjà dessus.
+            existing_owner = User.objects.filter(assigned_vehicle=vehicle).first()
+            
+            if existing_owner:
+                # Si on est en mise à jour et que c'est déjà notre véhicule, c'est OK
+                if self.instance and existing_owner.pk == self.instance.pk:
+                    return vehicle
+                raise serializers.ValidationError(
+                    f"Ce véhicule est déjà assigné à {existing_owner.get_full_name()}."
+                )
+        return vehicle
+
     def create(self, validated_data):
-        password         = validated_data.pop('password')
-        assigned_vehicle = validated_data.pop('assigned_vehicle', None)
+        password             = validated_data.pop('password')
+        assigned_vehicle     = validated_data.pop('assigned_vehicle', None)
+        driver_assignment_type = validated_data.pop('driver_assignment_type', 'POOL')
+        license_number       = validated_data.pop('license_number', '')
+        license_category     = validated_data.pop('license_category', 'B')
+        license_expiry_date  = validated_data.pop('license_expiry_date', None)
+        years_of_experience  = validated_data.pop('years_of_experience', 0)
+        assigned_bus         = validated_data.pop('assigned_bus', None)
 
-        user = User.objects.create_user(password=password, **validated_data)
+        final_password = password if password else "driveparc2026!"
+        user = User.objects.create_user(password=final_password, **validated_data)
 
-        # Marquer comme activé dans le registre
-        StaffRegistry.objects.filter(
-            employee_id=user.employee_id
-        ).update(is_activated=True)
+        # Créer le profil chauffeur si nécessaire
+        if user.role == 'CHAUFFEUR' and license_number and license_expiry_date:
+            from apps.users.models import DriverProfile
+            DriverProfile.objects.create(
+                user=user,
+                assignment_type=driver_assignment_type,
+                license_number=license_number,
+                license_category=license_category or 'B',
+                license_issue_date=license_expiry_date,  # temporaire
+                license_expiry_date=license_expiry_date,
+                years_of_experience=years_of_experience,
+                assigned_vehicle=assigned_bus,
+                manual_status='DISPONIBLE',
+            )
 
+        # Assigner véhicule directeur
         if assigned_vehicle:
             user.assigned_vehicle = assigned_vehicle
             user.save()
@@ -151,11 +185,34 @@ class UserCreateWithVehicleSerializer(serializers.ModelSerializer):
             assigned_vehicle.assigned_director = user.get_full_name()
             assigned_vehicle.save()
 
+        # Alimenter le registre silencieusement
+        try:
+            from apps.users.models import StaffRegistry
+            StaffRegistry.objects.update_or_create(
+                employee_id=user.employee_id,
+                defaults={
+                    'first_name':          user.first_name,
+                    'last_name':           user.last_name,
+                    'department':          user.department,
+                    'role_hint':           user.role if user.role in ['CHAUFFEUR','TECHNICIEN'] else 'PERSONNEL',
+                    'personnel_type_hint': user.personnel_type or '',
+                    'is_activated':        True,
+                }
+            )
+        except Exception:
+            pass
+
         return user
 
     def update(self, instance, validated_data):
-        password         = validated_data.pop('password', None)
-        assigned_vehicle = validated_data.pop('assigned_vehicle', None)
+        password             = validated_data.pop('password', None)
+        assigned_vehicle     = validated_data.pop('assigned_vehicle', None)
+        driver_assignment_type = validated_data.pop('driver_assignment_type', None)
+        license_number       = validated_data.pop('license_number', None)
+        license_category     = validated_data.pop('license_category', None)
+        license_expiry_date  = validated_data.pop('license_expiry_date', None)
+        years_of_experience  = validated_data.pop('years_of_experience', None)
+        assigned_bus         = validated_data.pop('assigned_bus', None)
 
         for attr, val in validated_data.items():
             setattr(instance, attr, val)
@@ -163,17 +220,13 @@ class UserCreateWithVehicleSerializer(serializers.ModelSerializer):
         if password:
             instance.set_password(password)
 
-        # Gérer le changement de véhicule
+        # Gérer le véhicule directeur
         if 'assigned_vehicle' in self.initial_data:
-            old_vehicle = instance.assigned_vehicle
-
-            # Libérer l'ancien véhicule
-            if old_vehicle and old_vehicle != assigned_vehicle:
-                old_vehicle.assignment_type   = 'POOL'
-                old_vehicle.assigned_director = ''
-                old_vehicle.save()
-
-            # Assigner le nouveau
+            old = instance.assigned_vehicle
+            if old and old != assigned_vehicle:
+                old.assignment_type   = 'POOL'
+                old.assigned_director = ''
+                old.save()
             instance.assigned_vehicle = assigned_vehicle
             if assigned_vehicle:
                 assigned_vehicle.assignment_type   = 'FONCTION'
@@ -181,15 +234,30 @@ class UserCreateWithVehicleSerializer(serializers.ModelSerializer):
                 assigned_vehicle.save()
 
         instance.save()
+
+        # Mettre à jour profil chauffeur si existe
+        if instance.role == 'CHAUFFEUR':
+            try:
+                from apps.users.models import DriverProfile
+                profile = instance.driver_profile
+                if driver_assignment_type: profile.assignment_type = driver_assignment_type
+                if license_number:         profile.license_number  = license_number
+                if license_category:       profile.license_category = license_category
+                if license_expiry_date:    profile.license_expiry_date = license_expiry_date
+                if years_of_experience is not None: profile.years_of_experience = years_of_experience
+                if assigned_bus is not None: profile.assigned_vehicle = assigned_bus
+                profile.save()
+            except Exception:
+                pass
+
         return instance
-from .models import User, DriverProfile, TechnicianProfile, Department
 
 class DepartmentSerializer(serializers.ModelSerializer):
     member_count = serializers.SerializerMethodField()
 
     class Meta:
         model  = Department
-        fields = ['id', 'name', 'code', 'description', 'member_count', 'created_at']
+        fields = ['id', 'name', 'code', 'school', 'description', 'member_count', 'created_at']
         read_only_fields = ['id', 'created_at', 'member_count']
 
     def get_member_count(self, obj):

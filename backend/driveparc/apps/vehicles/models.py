@@ -365,7 +365,49 @@ class VehicleAssignment(BaseModel):
         
         return self.start_date <= today
 
+# apps/vehicles/models.py (ajout)
 
+# apps/vehicles/models.py — ajoute ce modèle
+# apps/vehicles/models.py — dans BusRoute
+class BusRoute(models.Model):
+    vehicle       = models.OneToOneField(Vehicle, on_delete=models.CASCADE, related_name='bus_route')
+    ligne         = models.CharField(max_length=1)
+    nom_trajet    = models.CharField(max_length=100)
+    point_depart  = models.CharField(max_length=100)
+    point_arrivee = models.CharField(max_length=100, default="IUC Logbessou")
+    heure_depart  = models.TimeField(null=True, blank=True)   # ← ajoute
+    heure_arrivee = models.TimeField(null=True, blank=True)   # ← ajoute
+    nb_tours      = models.IntegerField(default=2)
+    jours_service = models.JSONField(default=list)
+    arrets        = models.JSONField(default=list, blank=True)
+    created_at    = models.DateTimeField(auto_now_add=True)
+    updated_at    = models.DateTimeField(auto_now=True)
+
+class BusRouteLog(models.Model):
+    """Pointage journalier : le chauffeur confirme qu'il a effectué son trajet"""
+    STATUS_CHOICES = [
+        ('EFFECTUE',   'Effectué'),
+        ('RETARD',     'Effectué avec retard'),
+        ('ANNULE',     'Annulé'),
+        ('INCIDENT',   'Incident signalé'),
+    ]
+    route         = models.ForeignKey(BusRoute, on_delete=models.CASCADE,
+                                       related_name='logs')
+    chauffeur     = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    date          = models.DateField()
+    status        = models.CharField(max_length=20, choices=STATUS_CHOICES,
+                                      default='EFFECTUE')
+    heure_depart_reelle  = models.TimeField(null=True, blank=True)
+    heure_arrivee_reelle = models.TimeField(null=True, blank=True)
+    nb_passagers  = models.IntegerField(default=0)
+    commentaire   = models.TextField(blank=True)
+    created_at    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('route', 'date')  # un seul pointage par jour par trajet
+
+    def __str__(self):
+        return f"{self.route.ligne} — {self.date} — {self.status}"
 class VehicleInsurance(BaseModel):
     """
     Modèle pour gérer les assurances des véhicules

@@ -5,20 +5,35 @@ Vues pour l'application users
 from rest_framework import viewsets, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from social_django.views import complete as social_complete
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import logout
 from django.db.models import Q
+from django.shortcuts import redirect
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import User, DriverProfile, TechnicianProfile
 from .serializers import (
     UserSerializer, UserCreateSerializer, UserUpdateSerializer,
     ChangePasswordSerializer, LoginSerializer, DriverProfileSerializer,
-    TechnicianProfileSerializer
+    TechnicianProfileSerializer, UserCreateWithVehicleSerializer,
+    StaffRegistrySerializer,
 )
 from core.permissions import IsAdministrator, CanManageUsers
 
+@csrf_exempt
+def oauth_complete(request, backend):
+    access  = request.session.get('jwt_access')
+    refresh = request.session.get('jwt_refresh')
 
+    if not access:
+        return redirect("http://localhost:5173/login?error=oauth_failed")
+
+    return redirect(
+        f"http://localhost:5173/oauth-callback?access={access}&refresh={refresh}"
+    )
 class AuthViewSet(viewsets.GenericViewSet):
     """
     ViewSet pour l'authentification et la gestion du compte
@@ -330,8 +345,14 @@ class UserViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_200_OK)
     @action(detail=False, methods=['post'], url_path='create-with-vehicle')
     def create_with_vehicle(self, request):
+        import json
+        print("=== DATA REÇUE ===", json.dumps(request.data, indent=2, default=str))
+        
         serializer = UserCreateWithVehicleSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            print("=== ERREURS VALIDATION ===", serializer.errors)
+            return Response(serializer.errors, status=400)
+        
         user = serializer.save()
         return Response(UserSerializer(user).data, status=201)
 
@@ -495,3 +516,17 @@ class TechnicianProfileViewSet(viewsets.ModelViewSet):
             'success': True,
             'data': serializer.data
         }, status=status.HTTP_200_OK)
+def oauth_complete_with_jwt(request, backend, *args, **kwargs):
+    try:
+        response = social_complete(request, backend, *args, **kwargs)
+        user = request.user
+        if user and user.is_authenticated:
+            refresh = RefreshToken.for_user(user)
+            access  = str(refresh.access_token)
+            ref     = str(refresh)
+            return redirect(
+                f'http://localhost:5173/oauth-callback?access={access}&refresh={ref}'
+            )
+        return response
+    except Exception as e:
+        return redirect(f'http://localhost:5173/login?error={str(e)}')

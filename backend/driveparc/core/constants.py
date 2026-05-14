@@ -90,8 +90,10 @@ BREAKDOWN_STATUS = (
     ('SIGNALE', 'Signalé'),
     ('EN_DIAGNOSTIC', 'En diagnostic'),
     ('EN_REPARATION', 'En réparation'),
+    ('TRANSFERE_MAINT','Transféré en maintenance'),
     ('REPARE', 'Réparé'),
     ('NON_REPARABLE', 'Non réparable'),
+    
 )
 
 # Types de dépenses

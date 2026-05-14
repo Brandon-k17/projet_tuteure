@@ -1,473 +1,301 @@
 import React, { useState } from "react";
 
-// ✅ Définir votre API base URL
-const API_BASE = "http://localhost:8000/api/v1/auth"; // Ajustez selon votre backend
+const API_BASE = "http://localhost:8000/api/v1/auth";
 
-/**
- * LOGIN SCREEN - DRIVEPARC x IUC
- */
-export default function LoginScreen({ onLogin }) {  // ✅ Exporté
-  const [email, setEmail] = useState("");
+export default function LoginScreen({ onLogin }) {
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading]   = useState(false);
+  const [error, setError]       = useState("");
+
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:8000/api/v1/auth/social/login/google-oauth2/";
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
-      setError("Veuillez remplir tous les champs.");
-      return;
-    }
-    setLoading(true);
-    setError("");
-
+    if (!email.trim() || !password.trim()) { setError("Veuillez remplir tous les champs."); return; }
+    setLoading(true); setError("");
     try {
-      const res = await fetch(`${API_BASE}/login/`, {
+      const res  = await fetch(`${API_BASE}/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim(), password }),
       });
-
       const json = await res.json();
-
       if (!res.ok || !json.success) {
-        setError(
-          json?.message ||
-          json?.non_field_errors?.[0] ||
-          json?.detail ||
-          "Email ou mot de passe incorrect."
-        );
+        setError(json?.message || json?.non_field_errors?.[0] || json?.detail || "Email ou mot de passe incorrect.");
         return;
       }
-
       onLogin(json.data);
-
-    } catch {
-      setError("Impossible de joindre le serveur. Vérifiez votre connexion.");
-    } finally {
-      setLoading(false);
-    }
+    } catch { setError("Impossible de joindre le serveur."); }
+    finally  { setLoading(false); }
   };
 
-  const Icons = {
-    Email: () => (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-      </svg>
-    ),
-    EyeOn: () => (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-      </svg>
-    ),
-    EyeOff: () => (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-        <line x1="1" y1="1" x2="23" y2="23"/>
-      </svg>
-    ),
-    Loader: () => (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-        style={{ animation: "dp-spin 0.9s linear infinite", display: "block" }}>
-        <path d="M21 12a9 9 0 1 1-6.21-8.56"/>
-      </svg>
-    ),
-  };
- 
   return (
-    <div className="dp-page-wrapper">
+    <div className="dp-wrap">
       <style>{CSS}</style>
- 
-      <div className="dp-container">
- 
-        {/* ── GAUCHE : Formulaire ────────────────────────────────────── */}
-        <div className="dp-auth-section">
- 
-          {/* Brand */}
-          <div className="dp-brand-header">
-            <div className="dp-logo-box">
-              <span className="dp-iuc-v">I</span>
-              <span className="dp-iuc-r">U</span>
-              <span className="dp-iuc-v">C</span>
+      <div className="dp-card">
+
+        <div className="dp-left">
+
+          {/* Header : logo + DRIVEPARC à gauche | IUC à droite */}
+          <div className="dp-header">
+            <div className="dp-brand">
+              <img src="/assets/logo (3).png" alt="DriveParc" className="dp-logo-img" />
+              <span className="dp-brand-name">
+                <span className="dp-drive">DRIVE</span><span className="dp-parc">PARC</span>
+              </span>
             </div>
-            <span className="dp-logo-text">DRIVEPARC</span>
+            <div className="dp-iuc">
+              <span className="g">I</span><span className="r">U</span><span className="g">C</span>
+            </div>
           </div>
- 
-          <div className="dp-form-content">
-            <h1 className="dp-main-title">Connexion à votre espace</h1>
-            <p className="dp-sub-title">Saisissez vos identifiants DriveParc</p>
- 
-            {/* Erreur API */}
-            {error && (
-              <div className="dp-error-box">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+
+          {/* Titre */}
+          <div className="dp-heading">
+            <p className="dp-title">Connexion</p>
+            <p className="dp-sub">Connectez-vous à votre espace DriveParc</p>
+          </div>
+
+          {error && <div className="dp-err">⚠ {error}</div>}
+
+          <button className="dp-google" onClick={handleGoogleLogin} type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continuer avec Google
+          </button>
+
+          <div className="dp-div"><span>ou</span></div>
+
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="dp-field">
+              <label className="dp-lbl">Email</label>
+              <div className="dp-inp-wrap">
+                <svg className="dp-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
                 </svg>
-                {error}
+                <input className="dp-inp" type="email" required placeholder="gestionnaire@iuc.univ.cm"
+                  value={email} onChange={e => { setEmail(e.target.value); setError(""); }} disabled={loading} />
               </div>
-            )}
- 
-            <form onSubmit={handleSubmit} className="dp-form" noValidate>
- 
-              {/* Email */}
-              <div className="dp-field">
-                <label className="dp-label">Votre adresse email</label>
-                <div className="dp-input-wrapper">
-                  <span className="dp-input-icon"><Icons.Email /></span>
-                  <input
-                    type="email"
-                    required
-                    placeholder="gestionnaire@iuc.univ.cm"
-                    className="dp-input"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                    disabled={loading}
-                  />
-                </div>
+            </div>
+
+            <div className="dp-field">
+              <label className="dp-lbl">Mot de passe</label>
+              <div className="dp-inp-wrap">
+                <button type="button" className="dp-ico dp-eye" onClick={() => setShowPass(!showPass)} tabIndex={-1}>
+                  {showPass
+                    ? <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    : <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  }
+                </button>
+                <input className="dp-inp" type={showPass ? "text" : "password"} required placeholder="••••••••••"
+                  value={password} onChange={e => { setPassword(e.target.value); setError(""); }} disabled={loading} />
               </div>
- 
-              {/* Mot de passe */}
-              <div className="dp-field">
-                <label className="dp-label">Votre mot de passe</label>
-                <div className="dp-input-wrapper">
-                  <button
-                    type="button"
-                    className="dp-input-icon dp-eye-btn"
-                    onClick={() => setShowPass(!showPass)}
-                    tabIndex={-1}
-                  >
-                    {showPass ? <Icons.EyeOff /> : <Icons.EyeOn />}
-                  </button>
-                  <input
-                    type={showPass ? "text" : "password"}
-                    required
-                    placeholder="Entrez votre mot de passe"
-                    className="dp-input"
-                    value={password}
-                    onChange={(e) => { setPassword(e.target.value); setError(""); }}
-                    disabled={loading}
-                  />
-                </div>
-              </div>
- 
-              {/* Remember + forgot */}
-              <div className="dp-row">
-                <label className="dp-remember">
-                  <input type="checkbox" className="dp-checkbox" />
-                  <span>Rester connecté</span>
-                </label>
-                <a href="#" className="dp-forgot">Mot de passe oublié ?</a>
-              </div>
- 
-              {/* Submit */}
-              <button type="submit" className="dp-submit-btn" disabled={loading}>
-                {loading
-                  ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}><Icons.Loader /> Connexion…</span>
-                  : "Se connecter"
-                }
-              </button>
- 
-            </form>
-          </div>
- 
-          <div className="dp-footer-support">
-            Besoin d'aide ?&nbsp;<a href="mailto:admin@iuc.univ.cm">Contacter le support IUC</a>
-          </div>
+            </div>
+
+            <div className="dp-row">
+              <label className="dp-rem"><input type="checkbox" className="dp-chk" /><span>Rester connecté</span></label>
+              <a href="#" className="dp-fgt">Mot de passe oublié ?</a>
+            </div>
+
+            <button className="dp-btn" type="submit" disabled={loading}>
+              {loading ? "Connexion…" : "Se connecter"}
+            </button>
+          </form>
+
+          <p className="dp-foot">Besoin d'aide ? <a href="mailto:admin@iuc.univ.cm">Support IUC</a></p>
         </div>
- 
-        {/* ── DROITE : Image voiture ────────────────────────────────── */}
-        <div className="dp-image-section">
-          <img
-            src="/assets/im.jpeg"
-            alt="Voiture de sport"
-            className="dp-car-img"
-          />
-          <div className="dp-image-overlay">
-            <span>Passez à la vitesse supérieure</span>
-          </div>
+
+        <div className="dp-right">
+          <img src="/assets/im.jpeg" alt="" className="dp-img" />
+          <div className="dp-badge">Passez à la vitesse supérieure</div>
         </div>
- 
+
       </div>
     </div>
   );
 }
- 
-// ─── CSS ──────────────────────────────────────────────────────────────────────
+
 const CSS = `
- /* ✅ FIX BODY + HTML */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    height: 100vh !important;
-    width: 100vw !important;
-    overflow: hidden !important;
-    background: #f1f5f9 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { height: 100vh; width: 100vw; overflow: hidden; }
+
+  .dp-wrap {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #eef1f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .dp-page-wrapper {
-    height: 100vh;  /* ✅ FIX */
-    width: 100vw;   /* ✅ FIX */
-    background: #f1f5f9;
+  .dp-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', -apple-system, sans-serif;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-
-  .dp-container {
-  display: flex;
-  width: 100%;
-  max-width: 700px;      /* ✅ 700px parfait */
-  height: 480px;         /* ✅ Hauteur fixe élégante */
-  background: #ffffff;
-  border-radius: 24px;   /* ✅ Coins arrondis + doux */
-  box-shadow:            /* ✅ OMBRE 3D PREMIUM */
-    0 25px 50px -12px rgba(0, 0, 0, 0.15),
-    0 10px 20px -8px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
- 
-  /* ── Section formulaire ── */
-  .dp-auth-section {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-  }
- 
-  .dp-brand-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
- 
-  .dp-logo-box {
-    display: flex;
-    font-weight: 900;
-    font-size: 20px;
-    letter-spacing: -1px;
-  }
- 
-  .dp-iuc-v { color: #1a5d3b; }
-  .dp-iuc-r { color: #e11d48; }
- 
-  .dp-logo-text {
-    font-weight: 700;
-    font-size: 18px;
-    color: #1e293b;
-    letter-spacing: 1px;
-    border-left: 2px solid #e2e8f0;
-    padding-left: 12px;
-  }
- 
-  .dp-form-content { flex: 1; }
- 
-  .dp-main-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 4px;
-  }
- 
-  .dp-sub-title {
-    font-size: 14px;
-    color: #64748b;
-    margin-bottom: 20px;
-  }
- 
-  /* Erreur */
-  .dp-error-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff0f1;
-    border: 1.5px solid #e63946;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 13px;
-    color: #c0303a;
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
- 
-  .dp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
- 
-  .dp-field {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
- 
-  .dp-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #475569;
-  }
- 
-  .dp-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
- 
-  .dp-input-icon {
-    position: absolute;
-    left: 14px;
-    color: #94a3b8;
-    display: flex;
-    z-index: 5;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: default;
-  }
- 
-  .dp-eye-btn {
-    cursor: pointer;
-    transition: color 0.2s;
-  }
- 
-  .dp-eye-btn:hover { color: #1a5d3b; }
- 
-  .dp-input {
-    width: 100%;
-    padding: 12px 14px 12px 44px;
-    border: 1.5px solid #e8edf2;
-    background: #f8fafc;
-    border-radius: 8px;
-    font-size: 14px;
-    color: #1e293b;
-    transition: all 0.2s;
-    font-family: inherit;
-  }
- 
-  .dp-input::placeholder { color: #303336; opacity: 1; }
- 
-  .dp-input:focus {
-    outline: none;
-    border-color: #1a5d3b;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(26,93,59,0.1);
-  }
- 
-  .dp-input:disabled { opacity: .65; cursor: not-allowed; }
- 
-  .dp-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
- 
-  .dp-remember {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #64748b;
-    cursor: pointer;
-    user-select: none;
-  }
- 
-  .dp-checkbox { accent-color: #1a5d3b; }
- 
-  .dp-forgot {
-    font-size: 12px;
-    color: #e11d48;
-    text-decoration: none;
-    font-weight: 600;
-  }
- 
-  .dp-forgot:hover { text-decoration: underline; }
- 
-  .dp-submit-btn {
-    width: 100%;
-    padding: 8px;
-    background: #1a5d3b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 6px;
-    transition: background .2s, transform .1s, box-shadow .2s;
-    font-family: inherit;
-  }
- 
-  .dp-submit-btn:hover:not(:disabled) {
-    background: #14472d;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(26,93,59,0.25);
-  }
- 
-  .dp-submit-btn:disabled { opacity: .7; cursor: not-allowed; }
- 
-  .dp-footer-support {
-    font-size: 12px;
-    color: #94a3b8;
-    text-align: center;
-    margin-top: 16px;
-  }
- 
-  .dp-footer-support a {
-    color: #1a5d3b;
-    text-decoration: none;
-    font-weight: 600;
-  }
- 
-  /* ── Section image ── */
-  .dp-image-section {
-    flex: 1;
-    position: relative;
+    width: 660px;
+    height: 440px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.04);
     overflow: hidden;
   }
- 
-  .dp-car-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .4s ease;
+
+  .dp-left {
+    width: 310px;
+    flex-shrink: 0;
+    padding: 22px 26px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
   }
- 
-  .dp-image-section:hover .dp-car-img { transform: scale(1.03); }
- 
-  .dp-image-overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(6px);
-    padding: 12px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 11px;
+
+  /* Header */
+  .dp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dp-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Logo plus grand */
+  .dp-logo-img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* DRIVEPARC texte comme sur l'image */
+  .dp-brand-name {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    line-height: 1;
+  }
+  .dp-drive { color: #212224; }
+  .dp-parc  { color: #1a8a4a; }
+
+  /* Badge IUC */
+  .dp-iuc {
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 4px 10px;
+    border-radius: 8px;
+   
+  }
+  .dp-iuc .g { color: #1a5d3b; }
+  .dp-iuc .r { color: #e11d48; }
+
+  /* Titre — plus grand */
+  .dp-heading { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+  .dp-title {
+    font-size: 15px;
     font-weight: 700;
-    color: #1a5d3b;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    color: #0f172a;
+    letter-spacing: -.3px;
   }
- 
+  .dp-sub { font-size: 11px; color: #64748b; }
+
+  .dp-err {
+    background: #fff0f1; border: 1px solid #e63946;
+    border-radius: 6px; padding: 5px 9px;
+    font-size: 11px; color: #c0303a; font-weight: 500;
+  }
+
+  .dp-google {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 7px 12px;
+    border: 1.5px solid #dde3ec; border-radius: 7px;
+    background: #fff; color: #1e293b;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: background .18s, box-shadow .18s, transform .12s;
+  }
+  .dp-google:hover {
+    background: #f7f9fc; border-color: #c5cdd8;
+    transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  .dp-div { display: flex; align-items: center; gap: 8px; font-size: 10.5px; color: #94a3b8; }
+  .dp-div::before, .dp-div::after { content: ""; flex: 1; height: 1px; background: #e8edf2; }
+
+  .dp-field { display: flex; flex-direction: column; gap: 3px; }
+  .dp-lbl   { font-size: 10.5px; font-weight: 700; color: #475569; }
+
+  .dp-inp-wrap { position: relative; display: flex; align-items: center; }
+
+  .dp-ico {
+    position: absolute; left: 10px; color: #94a3b8;
+    display: flex; background: none; border: none; padding: 0; cursor: default;
+  }
+  .dp-eye { cursor: pointer; transition: color .18s; }
+  .dp-eye:hover { color: #1a5d3b; }
+
+  .dp-inp {
+    width: 100%; padding: 7px 10px 7px 30px;
+    border: 1.5px solid #e2e8f0; background: #f8fafc;
+    border-radius: 7px; font-size: 12px; color: #1e293b;
+    font-family: inherit; transition: border-color .18s, box-shadow .18s;
+  }
+  .dp-inp::placeholder { color: #a8b5c8; }
+  .dp-inp:focus {
+    outline: none; border-color: #1a5d3b; background: #fff;
+    box-shadow: 0 0 0 3px rgba(26,93,59,0.09);
+  }
+  .dp-inp:disabled { opacity: .6; cursor: not-allowed; }
+
+  .dp-row { display: flex; justify-content: space-between; align-items: center; }
+  .dp-rem { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #64748b; cursor: pointer; user-select: none; }
+  .dp-chk { accent-color: #1a5d3b; width: 12px; height: 12px; }
+  .dp-fgt { font-size: 10.5px; color: #e11d48; text-decoration: none; font-weight: 600; }
+  .dp-fgt:hover { text-decoration: underline; }
+
+  .dp-btn {
+    width: 100%; padding: 8px;
+    background: linear-gradient(135deg, #1a5d3b 0%, #0f3d27 100%);
+    color: #fff; border: none; border-radius: 7px;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    transition: opacity .18s, transform .12s, box-shadow .18s;
+  }
+  .dp-btn:hover:not(:disabled) {
+    opacity: .92; transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(26,93,59,0.30);
+  }
+  .dp-btn:disabled { opacity: .7; cursor: not-allowed; }
+
+  .dp-foot { font-size: 10.5px; color: #94a3b8; text-align: center; margin-top: auto; }
+  .dp-foot a { color: #1a5d3b; text-decoration: none; font-weight: 600; }
+
+  .dp-right { flex: 1; position: relative; overflow: hidden; }
+  .dp-img   { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .dp-right:hover .dp-img { transform: scale(1.03); }
+
+  .dp-badge {
+    position: absolute; bottom: 14px; left: 14px; right: 14px;
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+    padding: 9px 12px; border-radius: 9px; text-align: center;
+    font-size: 9.5px; font-weight: 800; color: #1a5d3b;
+    text-transform: uppercase; letter-spacing: 2.5px;
+  }
+
   @keyframes dp-spin { to { transform: rotate(360deg); } }
- 
-  @media (max-width: 768px) {
-    .dp-container { flex-direction: column; height: auto; max-width: 420px; }
-    .dp-image-section { display: none; }
+
+  @media (max-width: 680px) {
+    .dp-card  { width: 100vw; height: 100vh; border-radius: 0; flex-direction: column; }
+    .dp-right { display: none; }
+    .dp-left  { width: 100%; padding: 36px 28px; }
   }
 `;

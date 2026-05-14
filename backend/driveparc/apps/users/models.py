@@ -42,12 +42,19 @@ class UserManager(BaseUserManager):
         
         return self.create_user(email, password, **extra_fields)
 
-class Department(BaseModel):
-    """Département de l'institution"""
-    name = models.CharField(_('Nom'), max_length=150, unique=True)
-    code = models.CharField(_('Code'), max_length=20, unique=True, blank=True, default="")
-    description = models.TextField(_('Description'), blank=True, null=True)
+SCHOOL_CHOICES = [
+    ("3IAC",           "3IAC — Informatique"),
+    ("ISTDI",          "ISTDI — Technologies & Design"),
+    ("ICIA",           "ICIA — Commerce & Ingénierie d'Affaires"),
+    ("SEAS",           "SEAS — Ingénierie anglophone"),
+    ("GRADUATE_SCHOOL","IUC Graduate School"),
+]
 
+class Department(BaseModel):
+    name   = models.CharField(max_length=150, unique=True)
+    code   = models.CharField(max_length=20, unique=True, blank=True, default="")
+    school = models.CharField(max_length=20, choices=SCHOOL_CHOICES, blank=True, default="")
+    description = models.TextField(blank=True, null=True)
     class Meta:
         verbose_name = _('Département')
         verbose_name_plural = _('Départements')
@@ -105,6 +112,21 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         verbose_name=_('Véhicule de fonction assigné'),
         help_text="Uniquement pour les directeurs"
     )
+    SCHOOL_CHOICES = [
+    ("3IAC",           "3IAC"),
+    ("ISTDI",          "ISTDI"),
+    ("ICIA",           "ICIA"),
+    ("SEAS",           "SEAS"),
+    ("GRADUATE_SCHOOL","Graduate School"),
+]
+
+    school = models.CharField(
+    _('École'),
+    max_length=20,
+    choices=SCHOOL_CHOICES,
+    blank=True,
+    default=""
+)
     department = models.ForeignKey(
     'Department',
     on_delete=models.SET_NULL,

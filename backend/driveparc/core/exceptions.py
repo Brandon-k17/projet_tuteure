@@ -11,57 +11,31 @@ import traceback
 
 
 def custom_exception_handler(exc, context):
-    """
-    Gestionnaire d'exceptions personnalisé pour l'API
-    Retourne des réponses d'erreur cohérentes
-    """
+    from rest_framework.views import exception_handler
     response = exception_handler(exc, context)
-
-    if response is None:
-        if isinstance(exc, DjangoValidationError):
-            response = Response({
-                'error': 'Validation Error',
-                'message': str(exc),
-                'details': exc.message_dict if hasattr(exc, 'message_dict') else None
-            }, status=status.HTTP_400_BAD_REQUEST)
-
-        elif isinstance(exc, Http404):
-            response = Response({
-                'error': 'Not Found',
-                'message': 'La ressource demandée n\'existe pas'
-            }, status=status.HTTP_404_NOT_FOUND)
-
-        else:
-            # ── DEBUG : affiche la vraie erreur ──
-            traceback.print_exc()
-            response = Response({
-                'error':     'Internal Server Error',
-                'message':   str(exc),
-                'traceback': traceback.format_exc(),
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+    
+    # TEMPORAIRE — expose l'erreur réelle pour debug
+    import traceback
+    traceback.print_exc()  # ← affiche la vraie erreur dans le terminal Django
+    
     if response is not None:
-        custom_response_data = {
-            'success': False,
-            'error': {
-                'code':    response.status_code,
-                'message': response.data.get('detail',
-                           response.data.get('message', 'Une erreur s\'est produite'))
+        return Response({
+            "success": False,
+            "error": {
+                "code": response.status_code,
+                "message": "Une erreur s'est produite",
+                "detail": response.data,  # ← AJOUTE ÇA temporairement
             }
+        }, status=response.status_code)
+    
+    # Erreur non gérée (500)
+    return Response({
+        "success": False,
+        "error": {
+            "code": 500,
+            "message": str(exc),  # ← AJOUTE ÇA temporairement
         }
-
-        if 'errors' in response.data or 'details' in response.data:
-            custom_response_data['error']['details'] = response.data.get(
-                'errors', response.data.get('details'))
-
-        # ── DEBUG : garde aussi le traceback dans la réponse ──
-        if 'traceback' in response.data:
-            custom_response_data['error']['traceback'] = response.data['traceback']
-
-        response.data = custom_response_data
-
-    return response
-
+    }, status=500)
 
 class BusinessLogicException(Exception):
     def __init__(self, message, code='BUSINESS_ERROR'):
